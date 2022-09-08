@@ -1,0 +1,240 @@
+.profile {
+    padding-top: 80px;
+    background-color: #1F2235;
+    font-family: 'Poppins', sans-serif;
+    min-height: calc(100vh - 80px);
+    padding-bottom: 80px;
+}
+
+.profiledesc {
+    margin-top: 30px;
+    margin-left: 42px;
+    margin-right: 42px;
+}
+
+.bannerimage img {
+    width: 100%
+}
+
+.profileimage {
+    margin-top: -94px;
+    margin-left: 60px;
+}
+
+.details {
+    margin-top: 20px;
+    margin-left: 70px;
+    color: white;
+}
+
+.name {
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 4px;
+}
+
+.desc {
+    font-weight: 300;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.descdetails {
+    font-weight: 200;
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.categorybar {
+    margin-top: 48px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 112px;
+    margin-bottom: 64px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.category {
+    font-weight: 200;
+    cursor: pointer;
+    /* padding: 2px 15px; */
+    margin-right: 24px;
+}
+
+.category:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    padding: 2px 15px;
+}
+
+.searchbar {
+    margin-right: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 200;
+    background: rgba(217, 217, 217, 0.1);
+    border-radius: 30px;
+    padding: 5px 15px 5px 15px;
+}
+
+.search {
+    margin-left: 10px;
+    font-weight: 100;
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search::placeholder {
+    font-weight: 400;
+    color: grey;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nfts {
+    margin-left: 112px;
+    display: grid;
+    column-gap: 60px;
+    grid-template-columns: repeat(auto-fit, 240px);
+    row-gap: 60px;
+    margin-right: 42px;
+}
+
+@media only screen and (max-width:1080px) {
+    .profileimage {
+        margin-top: -94px;
+        margin-left: 42px;
+    }
+
+    .details {
+        margin-left: 52px;
+    }
+
+    .categorybar {
+        margin-left: 92px;
+    }
+
+    .nfts {
+        margin-left: 92px;
+        display: grid;
+        column-gap: 42px;
+        grid-template-columns: repeat(auto-fit, 240px);
+        row-gap: 60px;
+        margin-right: 42px;
+    }
+}
+
+
+@media only screen and (max-width:850px) {
+    .profileimage {
+        margin-top: -70px;
+        margin-left: 20px;
+    }
+
+    .profileimage img {
+        width: 100px;
+    }
+
+    .details {
+        margin-left: 30px;
+    }
+
+    .name {
+        font-weight: 400;
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+
+    .desc {
+        font-weight: 300;
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .descdetails {
+        font-weight: 200;
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .categorybar {
+        margin-left: 72px;
+    }
+
+    .category {
+        font-weight: 200;
+        cursor: pointer;
+        /* padding: 2px 15px; */
+        margin-right: 18px;
+    }
+
+    .category:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 15px;
+        padding: 2px 15px;
+    }
+
+    .searchbar {
+        margin-right: 42px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-weight: 200;
+        background: rgba(217, 217, 217, 0.1);
+        border-radius: 30px;
+        padding: 5px 15px 5px 15px;
+    }
+
+    .nfts {
+        margin-left: 72px;
+        display: grid;
+        column-gap: 42px;
+        grid-template-columns: repeat(auto-fit, 240px);
+        row-gap: 60px;
+        margin-right: 42px;
+    }
+}
+
+@media only screen and (max-width:640px) {
+    .profiledesc {
+        margin-top: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .bannerimage{
+        margin-left: 0px;
+        justify-content: center;
+    }
+
+    .profileimage{
+        margin-top: -40px;
+    }
+
+    .profileimage img{
+        width: 70px;
+    }
+
+    .details{
+        margin-left: 0px;
+        justify-content: center;
+    }
+
+    .categorybar{
+        margin-left: 0px;
+        justify-content: center;
+    }
+
+    .nfts{
+        margin-left: calc(50% - 110px);
+    }
+}

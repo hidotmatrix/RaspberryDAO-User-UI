@@ -1,0 +1,421 @@
+.descmain {
+    background-color: #1F2235;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.descpage {
+    margin-top: 40px;
+    display: flex;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
+    min-height: 620px;
+    padding-bottom: 20px;
+    border: 1px solid white;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 50px;
+}
+
+.sampleProduct {
+    width: 500px;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+.details {
+    margin-top: 40px;
+    margin-left: 60px;
+    margin-right: 50px;
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    color: white;
+}
+
+.prodid {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 24px;
+    color: white;
+}
+
+.profdetails {
+    margin-top: 24px;
+    display: flex;
+    color: white;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.user {
+    width: 50px;
+    height: 50px;
+}
+
+.name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 24px;
+    color: white;
+    margin-left: 20px;
+}
+
+.userdesc {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    color: white;
+    margin-left: 20px;
+}
+
+.nftdesc {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 24px;
+}
+
+.swapbutton {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid rgba(220, 57, 252, 0.5);
+    border-radius: 100%;
+    width: 62px;
+    height: 62px;
+    margin-left: -31px;
+    margin-top: 50px;
+    background: #1F2235;
+    cursor: pointer;
+}
+
+.buttonswap {
+    border: none;
+    outline: none;
+    text-decoration: none;
+    background: transparent;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.swapbox {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 0.5px solid #FFFFFF;
+    backdrop-filter: blur(400px);
+    border-radius: 25px;
+    height: 180px;
+    display: flex;
+}
+
+.leftswapbox {
+    flex-basis: 50%;
+    border-right: 2px solid rgba(220, 57, 252, 0.5);
+    color: white;
+}
+
+.from {
+    margin-top: 10px;
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 25px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.selectNFT {
+    margin-top: 5px;
+    margin-left: 20px;
+    text-align: left;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-right: 50px;
+}
+
+.select {
+    border: none;
+    border-radius: 8px;
+    padding-left: 12px;
+    font-size: 16px;
+    line-height: 116%;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    font-weight: 500;
+    height: 40px;
+    width: 100%;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    align-items: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: rgba(217, 217, 217, 0.36);
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+select option{
+    color: #1F2235;
+    background: rgba(217, 217, 217, 0.36) !important;
+    font-size: 16px;
+}
+
+.select:invalid {
+    color: #FFFFFF !important;
+}
+
+.amountandbalance {
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+    font-family: 'Poppins', sans-serif;
+    justify-content: space-between;
+    margin-right: 50px
+}
+
+.amount {
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.unit {
+    font-size: 32px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.balance {
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.rightswapbox {
+    color: white;
+    flex-basis: 50%;
+}
+
+.to {
+    margin-top: 10px;
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 25px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.inputNFT {
+    margin-top: 5px;
+    margin-left: 20px;
+    text-align: left;
+    justify-content: center;
+    margin-right: 50px;
+    margin-bottom: 10px;
+}
+
+.input {
+    border-radius: 8px;
+    padding-left: 12px;
+    font-size: 16px;
+    line-height: 116%;
+    letter-spacing: 0.04em;
+    color: white;
+    font-weight: 400;
+    height: 40px;
+    width: 100%;
+    text-decoration: none;
+    align-items: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: rgba(217, 217, 217, 0.36);
+    outline: none;
+    border: none;
+}
+
+.categorybar {
+    margin-top: 48px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-bottom: 64px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.category {
+    font-weight: 200;
+    cursor: pointer;
+    /* padding: 2px 15px; */
+    margin-right: 24px;
+}
+
+.category:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    padding: 2px 15px;
+}
+
+.searchbar {
+    margin-right: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 200;
+    background: rgba(217, 217, 217, 0.1);
+    border-radius: 30px;
+    padding: 5px 15px 5px 15px;
+}
+
+.search {
+    margin-left: 10px;
+    font-weight: 100;
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search::placeholder {
+    font-weight: 400;
+    color: grey;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nfts {
+    margin-left: 50px;
+    display: grid;
+    column-gap: 60px;
+    grid-template-columns: repeat(auto-fit, 240px);
+    row-gap: 60px;
+    margin-right: 42px;
+}
+
+@media only screen and (max-width:1380px) {
+    .sampleProduct {
+        width: 450px;
+        margin-left: 30px;
+        margin-top: 70px;
+    }
+
+    .details {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+@media only screen and (max-width:1250px) {
+    .descpage {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .sampleProduct {
+        width: 450px;
+        margin-left: 0px;
+        margin-top: 40px;
+    }
+
+    .profdetails {
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width:750px) {
+    .sampleProduct {
+        width: 450px;
+    }
+
+    .swapbutton {
+        margin-left: calc(50% - 31px);
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        border: 2px solid rgba(220, 57, 252, 0.5);
+        border-radius: 100%;
+        width: 62px;
+        height: 62px;
+        margin-top: -31px;
+        background: #1F2235;
+        cursor: pointer;
+    }
+
+    .swapbox {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .leftswapbox {
+        flex-basis: 50%;
+        border-right: none;
+        padding-bottom: 20px;
+        border-bottom: 2px solid rgba(220, 57, 252, 0.5);
+        color: white;
+    }
+    
+    .rightswapbox {
+        color: white;
+        flex-basis: 50%;
+        padding-bottom: 20px;
+    }
+
+    .to {
+        margin-top: 0px;
+    }
+
+    .selectNFT{
+        margin-right: 14px;
+    }
+
+    .inputNFT {
+        margin-right: 30px;
+    }
+
+    .amountandbalance {
+        margin-right: 30px
+    }
+}
+
+@media only screen and (max-width:640px) {
+    .descpage {
+        margin-top: 40px;
+        display: flex;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
+        min-height: 620px;
+        padding-bottom: 20px;
+        border: 1px solid white;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 50px;
+    }
+
+    .sampleProduct {
+        width: 250px;
+    }
+
+    .categorybar {
+        margin-left: 0px;
+        justify-content: center;
+    }
+
+    .nfts {
+        margin-left: calc(50% - 110px);
+    }
+}

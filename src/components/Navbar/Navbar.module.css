@@ -1,0 +1,166 @@
+.entirenavbar {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 80px;
+    background-color: #1F2235;
+    font-family: 'Poppins', sans-serif;
+    position: fixed;
+    justify-content: space-between;
+    z-index: 5;
+}
+
+.left {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 42px;
+}
+
+.logo {
+    cursor: pointer;
+    align-items: center;
+}
+
+.logo img {
+    width: 36px;
+    display: block;
+}
+
+.menulinks {
+    display: inline-flex;
+    margin-left: 36px;
+    list-style: none;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 24px;
+}
+
+.home,
+.explore,
+.marketplace {
+    margin-right: 28px;
+    color: white;
+}
+
+.activities {
+    color: white;
+}
+
+.home:hover,
+.explore:hover,
+.marketplace:hover,
+.activities:hover {
+    color: #DC39FC;
+}
+
+.right {
+    margin-right: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hamburger {
+    display: none;
+}
+
+@media only screen and (max-width: 920px) {
+    .menulinks {
+        display: inline-flex;
+        margin-left: 30px;
+        list-style: none;
+        text-align: center;
+        align-items: center;
+        text-decoration: none;
+        font-weight: 200;
+        font-size: 20px;
+    }
+
+    .home,
+    .explore,
+    .marketplace {
+        margin-right: 20px;
+        color: white;
+    }
+}
+
+@media only screen and (max-width:800px) {
+    .hamburger {
+        display: block;
+        margin-left: 18px;
+    }
+
+    .menulinks {
+        display: none;
+    }
+
+    .mobileham {
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: #1F2235;
+        z-index: 100;
+        display: flex;
+    }
+
+    .closeimg {
+        position: absolute;
+        right: 30px;
+        top: 20px;
+    }
+
+    .mobileleft {
+        display: flex;
+        flex-direction: column;
+        margin-left: 36px;
+    }
+
+    .mobilelogo {
+        margin-top: 64px;
+    }
+
+    .mobilelogoimage {
+        width: 36px;
+    }
+
+    .mobilecontent {
+        z-index: 50;
+        margin-top: 24px;
+        font-weight: 200;
+        font-family: 'Poppins', sans-serif;
+        font-size: 22px;
+        line-height: 100%;
+        letter-spacing: 0.04em;
+    }
+
+    .mobilecontent ul {
+        list-style: none;
+    }
+
+    .home,
+    .explore,
+    .marketplace {
+        color: white;
+        margin-bottom: 22px;
+    }
+}
+
+@media only screen and (max-width:400px) {
+    .right {
+        margin-right: 30px;
+    }
+
+    .left {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 24px;
+    }
+    
+    .logo img {
+        width: 30px;
+        display: block;
+    }
+}

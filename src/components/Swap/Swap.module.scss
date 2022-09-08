@@ -1,0 +1,570 @@
+.dark {
+  .swappage {
+    background: #1f2235;
+  }
+
+  .heading {
+    color: #ffffff;
+  }
+
+  .swapbox {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 0.5px solid #ffffff;
+    backdrop-filter: blur(400px);
+    // background-image: url("../../images/Bg.svg");
+    // background-size: cover;
+  }
+
+  .choose {
+    border: 2px solid rgba(220, 57, 252, 0.5);
+    background: #1f2235;
+  }
+
+  .choosenft {
+    color: #ffffff;
+    background: transparent;
+  }
+
+  .choose:hover {
+    background: linear-gradient(90deg,
+        rgb(116, 2, 145) 12%,
+        rgb(255, 119, 214) 100%);
+  }
+
+  .swapbutton {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .swapbuttonopen{
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .buttonswap {
+    background: transparent;
+    color: #ffffff;
+  }
+
+  .leftswapbox {
+    color: white;
+  }
+
+  .select {
+    color: #ffffff;
+    background: rgba(217, 217, 217, 0.36);
+    font-family: 'Poppins', sans-serif;
+    -moz-appearance: none;
+    background: rgba(217, 217, 217, 0.36);
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 250px;
+    background-position-y: 8px;
+  }
+
+  select option {
+    color: #1f2235;
+    background: rgba(217, 217, 217, 0.36) !important;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .select:invalid {
+    color: #ffffff !important;
+  }
+
+  .amountandbalance {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 3px solid #adbdbd;
+  }
+
+  .amountandbalanceright {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 3px solid #adbdbd;
+  }
+
+  .amountandbalancerightopen {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 3px solid #adbdbd;
+  }
+
+  .rightswapbox {
+    color: white;
+  }
+
+  .to {
+    color: white;
+  }
+
+  .input {
+    color: white;
+    background: rgba(217, 217, 217, 0.36);
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+.light {
+  .swappage {
+    background: #f5f5f5;
+  }
+
+  .heading {
+    color: #1a1a1a;
+  }
+
+  .swapbox {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 0.5px solid #1a1a1a;
+    backdrop-filter: blur(400px);
+    // background-image: url("../../images/Bg.svg");
+    background-size: cover;
+  }
+
+  .choose {
+    border: 2px solid rgba(220, 57, 252, 0.5);
+    background: #f5f5f5;
+  }
+
+  .choosenft {
+    color: #1a1a1a;
+    background: transparent;
+  }
+
+  .choose:hover {
+    background: linear-gradient(90deg,
+        rgba(177, 4, 220, 0.611) 12%,
+        rgba(255, 119, 214, 0.681) 100%);
+  }
+
+  .swapbutton {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .swapbuttonopen {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .buttonswap {
+    background: transparent;
+    color: #1a1a1a;
+  }
+
+  .leftswapbox {
+    color: #1a1a1a;
+  }
+
+  .select {
+    color: #1a1a1a;
+    background: rgba(136, 136, 136, 0.36);
+    font-family: 'Poppins', sans-serif;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 250px;
+    background-position-y: 8px;
+  }
+
+  select option {
+    color: #1f2235;
+    background: rgba(136, 136, 136, 0.36);
+  }
+
+  .select:invalid {
+    color: #1a1a1a !important;
+  }
+
+  .amountandbalance {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 3px solid #8f8f8f;
+  }
+
+  .amountandbalanceright {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 3px solid #8f8f8f;
+  }
+
+  .amountandbalancerightopen {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 3px solid #8f8f8f;
+  }
+
+  .rightswapbox {
+    color: #1a1a1a;
+  }
+
+  .to {
+    color: #1a1a1a;
+  }
+
+  .input {
+    color: #1a1a1a;
+    background: rgba(136, 136, 136, 0.36);
+    font-family: 'Poppins', sans-serif;
+
+  }
+}
+
+.swappage {
+  padding-top: 80px;
+  min-height: calc(100vh - 100px);
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 20px;
+}
+
+.heading {
+  padding-top: 40px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 116%;
+  text-align: center;
+  padding-bottom: 36px;
+}
+
+.swapbox {
+  backdrop-filter: blur(400px);
+  border-radius: 25px;
+  width: 1000px;
+  margin-left: calc(50% - 500px);
+  display: flex;
+  background-size: cover;
+  padding-bottom: 40px;
+}
+
+.choose {
+  margin-left: 25px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: 50px;
+  padding: 12px 24px;
+  width: fit-content;
+  background: #1f2235;
+  cursor: pointer;
+}
+
+.choosenft {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.choose:hover {}
+
+.swapbutton {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 80px;
+  height: 70px;
+  margin-left: -15px;
+  margin-top: 230px;
+  cursor: pointer;
+}
+
+.swapbuttonopen {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 80px;
+  height: 70px;
+  margin-left: -15px;
+  margin-top: 450px;
+  cursor: pointer;
+}
+
+.buttonswap {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background: transparent;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.leftswapbox {
+  flex-basis: 50%;
+  /* border-right: 2px solid rgba(220, 57, 252, 0.5); */
+}
+
+.from {
+  margin-top: 30px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 30px;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+.cardinfo {
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.card{
+  display: flex;
+  align-items: center;
+}
+
+.aboutcard{
+  margin-left: 20px;
+  font-family: 'Poppins',sans-serif;
+}
+
+.cardhead{
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 136%;
+  margin-bottom: 6px;
+}
+
+.carddesc{
+  font-size: 18px;
+  font-weight: 200;
+  letter-spacing: 0.04em;
+  line-height: 136%;
+}
+
+.selectNFT {
+  margin-top: 5px;
+  margin-left: 30px;
+  text-align: left;
+  margin-bottom: 20px;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.select {
+  padding-left: 50px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 116%;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+  height: 40px;
+  width: 280px;
+  text-decoration: none;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+}
+
+select option {
+  font-size: 16px;
+}
+
+.amountandbalance {
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+  justify-content: space-between;
+  margin-right: 50px;
+  backdrop-filter: blur(400px);
+  border-radius: 50px;
+  padding: 15px 40px 15px 40px;
+}
+
+.amountandbalanceright {
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+  justify-content: space-between;
+  margin-right: 50px;
+  backdrop-filter: blur(400px);
+  border-radius: 50px;
+  padding: 15px 40px 15px 40px;
+  margin-top: 100px;
+}
+
+.amountandbalancerightopen {
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+  justify-content: space-between;
+  margin-right: 50px;
+  backdrop-filter: blur(400px);
+  border-radius: 50px;
+  padding: 15px 40px 15px 40px;
+  margin-top: 315px;
+}
+
+.amount {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.unit {
+  font-size: 32px;
+  font-weight: 400;
+  text-align: right;
+}
+
+.balance {
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.rightswapbox {
+  flex-basis: 50%;
+}
+
+.to {
+  margin-top: 30px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 30px;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+.inputNFT {
+  display: flex;
+  margin-top: 5px;
+  margin-left: 30px;
+  text-align: left;
+  margin-right: 50px;
+  margin-bottom: 10px;
+  align-items: center;
+  position: relative;
+}
+
+.bitcoinimg {
+  position: absolute;
+  z-index: 2;
+  margin-left: 10px;
+  width: 32px;
+}
+
+.input {
+  z-index: 1;
+  // margin-left: -40px;
+  padding-left: 40px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 116%;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  height: 40px;
+  width: 125px;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: none;
+}
+
+@media only screen and (max-width: 1080px) {
+  .swapbox {
+    backdrop-filter: blur(400px);
+    border-radius: 25px;
+    height: auto;
+    width: 600px;
+    margin-left: calc(50% - 300px);
+    display: flex;
+    background-image: none;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+
+  .swapbutton , .swapbuttonopen{
+    margin-top: 48px;
+    margin-left: calc(50% - 30px);
+  }
+
+  .amountandbalanceright, .amountandbalancerightopen {
+    margin-top: 24px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .heading {
+    font-size: 36px;
+    padding-bottom: 24px;
+  }
+
+  .swapbox {
+    backdrop-filter: blur(400px);
+    border-radius: 25px;
+    height: auto;
+    width: 320px;
+    margin-left: calc(50% - 160px);
+    display: flex;
+    background-image: none;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+
+  .card{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .aboutcard{
+    margin-left: 0px;
+  }
+
+  .swapbutton , .swapbuttonopen{
+    margin-top: 48px;
+    margin-left: calc(50% - 30px);
+  }
+
+  .from,
+  .to,
+  .choose {
+    margin-left: 15px;
+  }
+
+  .selectNFT,
+  .inputNFT {
+    margin-left: 20px;
+  }
+
+  .amountandbalance {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  .amountandbalanceright, .amountandbalancerightopen {
+    margin-top: 24px;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}

@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.homepage {
+    background-color: #1F2235;
+    padding-top: 80px;
+    min-height: calc(100vh - 80px);
+    padding-bottom: 20px;
+}
+
+.firsttop {
+    display: none;
+}
+
+.main {
+    padding-top: 10px;
+    padding-left: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 42px;
+}
+
+.main img {
+    padding-top: 20px;
+    width: 1200px;
+    height: 750px;
+    margin-right: 56px;
+}
+
+.maincontent {
+    color: white;
+}
+
+.maincontent {
+    font-weight: 300;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+}
+
+.explore {
+    font-weight: 500;
+    letter-spacing: 4px;
+    font-size: 56px;
+    margin-right: 8px;
+}
+
+.first {
+    font-weight: 400;
+    margin-bottom: 16px;
+    font-size: 42px;
+}
+
+.button {
+    margin-top: 36px;
+}
+
+.btn {
+    padding: 16px 30px;
+    border-radius: 36px;
+    border: none;
+    cursor: pointer;
+    background-color: #6245ED;
+    color: white;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #6245ED;
+    font-weight: 600;
+}
+
+@media only screen and (max-width:2100px) {
+    .main img {
+        padding-top: 20px;
+        width: 980px;
+        height: 680px;
+    }
+}
+
+@media only screen and (max-width:1900px) {
+    .main img {
+        padding-top: 20px;
+        width: 900px;
+        height: 650px;
+        margin-right: 42px;
+    }
+}
+
+@media only screen and (max-width:1800px) {
+    .main img {
+        padding-top: 20px;
+        width: 800px;
+        height: 600px;
+        margin-right: 42px;
+    }
+}
+
+@media only screen and (max-width:1600px) {
+    .main img {
+        padding-top: 20px;
+        width: 700px;
+        height: 500px;
+        margin-right: 42px;
+    }
+
+    .maincontent {
+        font-size: 30px;
+    }
+
+    .explore {
+        font-size: 48px;
+        margin-right: 8px;
+    }
+
+    .first {
+        font-weight: 400;
+        margin-bottom: 12px;
+        font-size: 36px;
+    }
+
+    .button {
+        margin-top: 30px;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width:1350px) {
+    .main img {
+        padding-top: 20px;
+        width: 600px;
+        height: 420px;
+        margin-right: 42px;
+    }
+}
+
+@media only screen and (max-width:1250px) {
+    .main img {
+        padding-top: 20px;
+        width: 500px;
+        height: 360px;
+        margin-right: 42px;
+    }
+
+    .maincontent {
+        font-size: 24px;
+    }
+
+    .explore {
+        font-size: 36px;
+        margin-right: 4px;
+    }
+
+    .first {
+        font-weight: 400;
+        margin-bottom: 12px;
+        font-size: 30px;
+    }
+
+    .button {
+        margin-top: 24px;
+    }
+}
+
+@media only screen and (max-width:1080px) {
+    .firsttop {
+        display: block;
+        text-align: center;
+        justify-content: center;
+        color: white;
+        font-weight: 400;
+        margin-bottom: 16px;
+        font-size: 36px;
+        padding-top: 20px;
+    }
+
+    .maincontent {
+        font-size: 24px;
+    }
+
+    .explore {
+        font-size: 48px;
+        margin-right: 6px;
+    }
+
+    .first {
+        display: none;
+    }
+
+    .main{
+        flex-direction: column;
+    }
+
+    .main img{
+        padding-top: 0px;
+        width: 100%;
+        padding-bottom: 16px;
+    }
+}
+
+@media only screen and (max-width:640px) {
+    .firsttop {
+        font-weight: 400;
+        margin-bottom: 16px;
+        font-size: 24px;
+        padding-top: 20px;
+    }
+
+    .maincontent {
+        font-size: 20px;
+    }
+
+    .explore {
+        font-size: 32px;
+        letter-spacing: 3px;
+        margin-right: 4px;
+    }
+
+    .first {
+        display: none;
+    }
+
+    .main{
+        flex-direction: column;
+    }
+
+    .main img{
+        padding-top: 0px;
+        width: 250px;
+        margin-left: calc(50% - 125px);
+        height: 200px;
+        padding-bottom: 16px;
+    }
+}
