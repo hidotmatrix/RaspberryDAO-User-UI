@@ -49,18 +49,22 @@ function Swap() {
                                         <div className={styles.aboutcard}>
                                             <div className={styles.cardhead}> MS DHONI </div>
                                             <div className={styles.carddesc}> From INDIA </div>
+                                            <div className={styles.edit} onClick={() => setOpen(true)}>
+                                                Edit
+                                            </div>
                                         </div>
                                     </div>
                                 </div> : null
                         }
+                        {!swap ? 
                         <div className={styles.choose} onClick={() => setOpen(true)}>
-                            <button className={styles.choosenft}>{swap ? 'Edit' : 'Choose A NFT'}</button>
-                        </div>
+                            <button className={styles.choosenft}>Choose A NFT</button>
+                        </div> : null}
                         <div className={styles.amountandbalance}>
                             <div className={styles.amount}>0.0</div>
                             <div className={styles.unitandbalance}>
                                 <div className={styles.unit}> NFT </div>
-                                <div className={styles.balance}>Balance - </div>
+                                <div className={styles.balance}>Balance - 12.32</div>
                             </div>
                         </div>
                     </div>
@@ -82,7 +86,7 @@ function Swap() {
                             <div className={styles.amount}>0.0</div>
                             <div className={styles.unitandbalance}>
                                 <div className={styles.unit}> NFT </div>
-                                <div className={styles.balance}>Balance - </div>
+                                <div className={styles.balance}>Balance - 10.72</div>
                             </div>
                         </div>
                     </div>

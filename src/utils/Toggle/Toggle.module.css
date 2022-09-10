@@ -117,7 +117,7 @@
         border-radius: 35px;
         cursor: pointer;
         box-sizing: content-box;
-        margin-right: 10px;
+        /* margin-right: 10px; */
     }
 
     .switchinput:checked~.switchhandle {
@@ -126,13 +126,13 @@
     }
 }
 
-@media only screen and (max-width:800px) {
+/* @media only screen and (max-width:800px) {
     .switch {
         margin-right: 22px;
     }
-}
+} */
 
-@media only screen and (max-width:400px) {
+@media only screen and (max-width:450px) {
     .switch {
         margin-right: 10px;
     }

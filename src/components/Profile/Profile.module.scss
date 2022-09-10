@@ -34,7 +34,7 @@
 
 .light {
   .profile {
-    background-color: #f5f5f5;
+    background-color: #eae6f0;
   }
 
   .details {
@@ -49,13 +49,13 @@
     color: #1a1a1a;
   }
   .category:hover {
-    background: rgb(229, 229, 229);
+    background: rgb(196, 194, 194);
   }
   .headcategory {
-    background: rgb(211, 211, 211);
+    background: rgb(196, 194, 194);
   }
   .headcategory:hover {
-    background: rgb(211, 211, 211);
+    background: rgb(196, 194, 194);
   }
   .searchbar {
     background: rgba(217, 217, 217, 0.1);
@@ -184,9 +184,9 @@
 .nfts {
   margin-left: 112px;
   display: grid;
-  column-gap: 60px;
+  column-gap: 42px;
   grid-template-columns: repeat(auto-fit, 240px);
-  row-gap: 60px;
+  row-gap: 72px;
   margin-right: 42px;
 }
 
@@ -209,7 +209,7 @@
     display: grid;
     column-gap: 42px;
     grid-template-columns: repeat(auto-fit, 240px);
-    row-gap: 60px;
+    row-gap: 72px;
     margin-right: 42px;
   }
 }
@@ -279,7 +279,7 @@
     display: grid;
     column-gap: 42px;
     grid-template-columns: repeat(auto-fit, 240px);
-    row-gap: 60px;
+    row-gap: 72px;
     margin-right: 42px;
   }
 }
@@ -287,8 +287,8 @@
 @media only screen and (max-width: 640px) {
   .profiledesc {
     margin-top: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 24px;
+    margin-right: 24px;
   }
 
   .bannerimage {
@@ -320,6 +320,6 @@
   }
 
   .nfts {
-    margin-left: calc(50% - 110px);
+    margin-left: calc(50% - 116px);
   }
 }
