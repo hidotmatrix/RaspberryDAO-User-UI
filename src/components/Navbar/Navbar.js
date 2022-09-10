@@ -72,7 +72,7 @@ function Navbar() {
                 </NavLink>
               </li>
 
-              <li>
+              {/* <li>
                 <NavLink
                   to="/activity"
                   className={(nav) =>
@@ -84,7 +84,7 @@ function Navbar() {
                   Activities
                   <div></div>
                 </NavLink>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -92,17 +92,15 @@ function Navbar() {
           <div className={styles.toggle}>
             <Toggle setStatus={toggleTheme} status={theme} />
           </div>
-          <div style={{color: "#4D3BCE" }}>
+          <div style={{ color: "#4D3BCE" }}>
             <ConnectButton />
           </div>
           <div className={styles.hamburger} onClick={() => setMobileOpen(true)}>
-            {
-              theme === "light" ? (
-                <img src={hamburgerdark} alt="Hamburger"></img>
-              ) : (
-                <img src={hamburger} alt="Hamburger"></img>
-              )
-            }
+            {theme === "light" ? (
+              <img src={hamburgerdark} alt="Hamburger"></img>
+            ) : (
+              <img src={hamburger} alt="Hamburger"></img>
+            )}
           </div>
         </div>
       </div>
@@ -172,7 +170,7 @@ function Navbar() {
                     <div></div>
                   </NavLink>
                 </li>
-                <li onClick={() => setMobileOpen(false)}>
+                {/* <li onClick={() => setMobileOpen(false)}>
                   <NavLink
                     to="/activity"
                     className={(nav) =>
@@ -184,7 +182,7 @@ function Navbar() {
                     Activities
                     <div></div>
                   </NavLink>
-                </li>
+                </li> */}
                 {/* <NavLink to="/profile" onClick={() => setMobileOpen(false)}>
                   <li className={styles.explore}>Dashboard</li>
                 </NavLink>
