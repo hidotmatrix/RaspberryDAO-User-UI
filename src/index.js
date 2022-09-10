@@ -41,14 +41,12 @@ const { chains, provider, webSocketProvider } = configureChains(
     chain.polygon,
     godwokenChain,
     chain.rinkeby,
+    chain.polygonMumbai,
     ...(process.env.REACT_APP_ENABLE_TESTNETS === "true"
       ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
       : []),
   ],
-  [
-    alchemyProvider({ apiKey: "_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC" }),
-    publicProvider(),
-  ]
+  [alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY }), publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
