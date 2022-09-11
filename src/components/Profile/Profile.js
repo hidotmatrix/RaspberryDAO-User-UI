@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Profile.module.scss";
 import Banner from "../../images/Profile/Banner.svg";
@@ -6,72 +6,76 @@ import ProfileImg from "../../images/Profile/Profile.svg";
 import { FaSearch } from "react-icons/fa";
 import Catalogue from "../Catalogue/Catalogue";
 import { ThemeContext } from "../../App";
+import { useNetwork, useSwitchNetwork } from "wagmi";
 import { Alchemy, Network } from "alchemy-sdk";
-import { chain, createClient, WagmiProvider } from "wagmi";
-import GetProvider from "../../hooks/GetProvider";
 
 function Profile() {
-  const provider = GetProvider();
-  let config;
-  switch (provider.network.name) {
-    case "homestead":
-      config = {
-        apiKey: process.env.ALCHEMY_API_KEY,
-        network: Network.ETH_MAINNET,
-      };
-      break;
-    case "matic":
-      config = {
-        apiKey: process.env.ALCHEMY_API_KEY,
-        network: Network.MATIC_MAINNET,
-      };
-      break;
-    case "rinkeby":
-      config = {
-        apiKey: process.env.ALCHEMY_API_KEY,
-        network: Network.ETH_RINKEBY,
-      };
-      break;
-    case "maticmum":
-      config = {
-        apiKey: process.env.ALCHEMY_API_KEY,
-        network: Network.MATIC_MUMBAI,
-      };
-      break;
-  }
-
-  const alchemy = new Alchemy(config);
-
+  const [provider, setProvider] = useState(null);
+  const [chainConfig, setConfig] = useState(null);
+  const [alchemy, setAlchemy] = useState(null);
+  const [userNFTs, setUserNFTs] = useState([]);
+  const { chain } = useNetwork();
   const themes = useContext(ThemeContext);
   const { theme } = themes;
 
   useEffect(() => {
-    async function fetchNFTs() {
-      console.log("Network", provider.network.name);
-      //   const userNFTs = await GetNFTs(address, provider.network.name);
-      //   console.log("User NFTs", userNFTs);
-      const address = "elanhalpern.eth";
+    async function fetchData() {
+      let config;
+      if (chain) {
+        switch (chain.network) {
+          case "homestead":
+            config = {
+              apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
+              network: Network.ETH_MAINNET,
+            };
+            break;
+          case "matic":
+            config = {
+              apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
+              network: Network.MATIC_MAINNET,
+            };
+            break;
+          case "rinkeby":
+            config = {
+              apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
+              network: Network.ETH_RINKEBY,
+            };
+            break;
+          case "maticmum":
+            config = {
+              apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
+              network: Network.MATIC_MUMBAI,
+            };
+            break;
+        }
+        const alchemy = new Alchemy(config);
+        // Wallet address
+        const address = "elanhalpern.eth";
 
-      // Get all NFTs
-      const nfts = await alchemy.nft.getNftsForOwner(address);
+        // Get all NFTs
+        const nfts = await alchemy.nft.getNftsForOwner(address);
+        setUserNFTs(nfts["ownedNfts"]);
 
-      console.log("User NFTs", nfts);
+        // Parse output
+        const numNfts = nfts["totalCount"];
+        const nftList = nfts["ownedNfts"];
 
-      // Parse output
-      const numNfts = nfts["totalCount"];
-      const nftList = nfts["ownedNfts"];
+        console.log(`Total NFTs owned by ${address}: ${numNfts} \n`);
 
-      console.log(`Total NFTs owned by ${address}: ${numNfts} \n`);
+        let i = 1;
 
-      let i = 1;
-
-      for (let nft of nftList) {
-        console.log(`${i}. ${nft.title}`);
-        i++;
+        for (let nft of nftList) {
+          console.log(`${i}. ${nft.title}`);
+          i++;
+        }
       }
+
+      setConfig(config);
+      console.log("Chain", chain);
+      console.log("useEffect called");
     }
-    fetchNFTs();
-  }, [provider]);
+    fetchData();
+  }, [chain, userNFTs]);
 
   let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
@@ -114,10 +118,10 @@ function Profile() {
                         </div> */}
           </div>
           <div className={styles.nfts}>
-            {num.map(() => {
+            {userNFTs.map((nft, index) => {
               return (
                 <Link to="/profile/iuebfibsdivdissdibv">
-                  <Catalogue />
+                  <Catalogue nft={nft} index={index} />
                 </Link>
               );
             })}

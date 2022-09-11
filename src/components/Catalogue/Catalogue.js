@@ -3,7 +3,13 @@ import styles from "./Catalogue.module.scss";
 import sample from "../../images/Sample.svg";
 import { ThemeContext } from "../../App";
 
-function Catalogue() {
+function Catalogue({ nft, index }) {
+  console.log("NFT details", nft);
+  const image_url = nft.media[0].gateway;
+  console.log("NFT name", nft.title);
+  console.log("Image url", image_url);
+  console.log("NFT description", nft.description);
+  console.log("NFT Token Id", nft.tokenId);
   const themes = useContext(ThemeContext);
   const { theme } = themes;
   return (
