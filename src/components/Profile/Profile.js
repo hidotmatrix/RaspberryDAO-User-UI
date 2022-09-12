@@ -6,7 +6,7 @@ import ProfileImg from "../../images/Profile/Profile.svg";
 import { FaSearch } from "react-icons/fa";
 import Catalogue from "../Catalogue/Catalogue";
 import { ThemeContext } from "../../App";
-import { useNetwork, useSwitchNetwork } from "wagmi";
+import { useAccount, useNetwork, useSwitchNetwork } from "wagmi";
 import { Alchemy, Network } from "alchemy-sdk";
 
 function Profile() {
@@ -18,6 +18,8 @@ function Profile() {
   const themes = useContext(ThemeContext);
   const { theme } = themes;
 
+  const { connector, isConnected } = useAccount();
+  console.log("isConnected", isConnected);
   useEffect(() => {
     async function fetchData() {
       let config;
@@ -50,7 +52,7 @@ function Profile() {
         }
         const alchemy = new Alchemy(config);
         // Wallet address
-        const address = "elanhalpern.eth";
+        const address = "elanhalpern.eth"; // static address
 
         // Get all NFTs
         const nfts = await alchemy.nft.getNftsForOwner(address);
