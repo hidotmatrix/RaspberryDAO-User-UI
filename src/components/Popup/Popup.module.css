@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.popup {
+    position: fixed;
+    z-index: 10;
+    width: 800px;
+    background-color: #1f2235;
+    border-radius: 24px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    transition: all 0.5s ease-in-out
+}
+
+.cross {
+    position: absolute;
+    right: 32px;
+    top: 30px;
+    cursor: pointer;
+}
+
+.catalogues {
+    margin-top: 80px;
+    padding-bottom: 40px;
+    max-height: calc(100vh - 200px);
+    overflow: auto;
+}
+
+.catalogues::-webkit-scrollbar-track {
+    border: none;
+    margin: 20px 0px;
+    background-color: transparent;
+}
+
+.catalogues::-webkit-scrollbar {
+    width: 4px;
+    margin-left: -10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.catalogues::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(15, 20, 58, 0.08);
+}
+
+.nfts {
+    justify-content: center;
+    display: grid;
+    column-gap: 60px;
+    grid-template-columns: repeat(auto-fit, 240px);
+    row-gap: 60px;
+}
+
+@media only screen and (max-width:850px) {
+    .popup{
+        width: 620px;
+    }
+    .nfts {
+        justify-content: center;
+        display: grid;
+        column-gap: 40px;
+        grid-template-columns: repeat(auto-fit, 240px);
+        row-gap: 40px;
+    }
+}
+
+@media only screen and (max-width:640px) {
+    .popup{
+        width: 340px;
+    }
+    .nfts {
+        justify-content: center;
+        display: grid;
+        column-gap: 40px;
+        grid-template-columns: repeat(auto-fit, 240px);
+        row-gap: 40px;
+    }
+}

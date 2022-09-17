@@ -1,0 +1,618 @@
+.dark {
+  .descmain {
+    background-color: #1f2235;
+  }
+
+  .descpage {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 1px solid white;
+  }
+
+  .title {
+    color: white;
+  }
+
+  .prodid {
+    color: white;
+  }
+
+  .profdetails {
+    color: white;
+  }
+
+  .name {
+    color: white;
+  }
+
+  .userdesc {
+    color: white;
+  }
+
+  .nftdesc {
+    color: white;
+  }
+
+  .swapbutton {
+    border: 2px solid rgba(220, 57, 252, 0.5);
+    background: #1f2235;
+  }
+
+  .buttonswap {
+    background: transparent;
+    color: #ffffff;
+  }
+
+  .swapbox {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 0.5px solid #ffffff;
+    backdrop-filter: blur(400px);
+  }
+
+  .leftswapbox {
+    color: white;
+  }
+
+  .category:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .searchbar {
+    background: rgba(217, 217, 217, 0.1);
+  }
+
+  .search {
+    background: transparent;
+    border: none;
+    color: white;
+  }
+
+  .search::placeholder {
+    color: grey;
+  }
+
+  .select {
+    color: #ffffff;
+    background: rgba(217, 217, 217, 0.36);
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: 7px;
+    border: none;
+    border-radius: 8px;
+    padding-left: 12px;
+    font-size: 16px;
+    line-height: 116%;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    height: 40px;
+    width: 100%;
+    text-decoration: none;
+    font-family: "Nunito", sans-serif;
+    align-items: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    outline: none;
+    cursor: pointer;
+  }
+
+  select option {
+    color: #1f2235;
+    background: rgba(217, 217, 217, 0.36) !important;
+  }
+
+  .select:invalid {
+    color: #ffffff !important;
+  }
+
+  .rightswapbox {
+    color: white;
+  }
+
+  .to {
+    color: white;
+  }
+
+  .input {
+    color: white;
+    background: rgba(217, 217, 217, 0.36);
+  }
+
+  .category {
+    color: white;
+  }
+
+  .category:hover {
+    background: #161825c8;
+  }
+
+  .headcategory {
+    background: #12141f;
+  }
+
+  .headcategory:hover {
+    background: #12141f;
+  }
+}
+
+.light {
+  .descmain {
+    background-color: #f5f5f5;
+  }
+
+  .descpage {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 1px solid rgba(220, 57, 252, 0.5);
+  }
+
+  .title {
+    color: #1a1a1a;
+  }
+
+  .prodid {
+    color: #1a1a1a;
+  }
+
+  .profdetails {
+    color: #1a1a1a;
+  }
+
+  .name {
+    color: #1a1a1a;
+    font-weight: 300;
+  }
+
+  .userdesc {
+    color: #1a1a1a;
+    font-weight: 200;
+  }
+
+  .nftdesc {
+    font-weight: 200;
+    color: #1a1a1a;
+  }
+
+  .swapbutton {
+    border: 2px solid rgba(220, 57, 252, 0.5);
+    background: #f5f5f5;
+  }
+
+  .buttonswap {
+    background: transparent;
+    color: #1a1a1a;
+  }
+
+  .swapbox {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border: 0.5px solid #1a1a1a;
+    backdrop-filter: blur(400px);
+  }
+
+  .leftswapbox {
+    color: #1a1a1a;
+  }
+
+  .category:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .searchbar {
+    background: rgba(217, 217, 217, 0.1);
+  }
+
+  .search {
+    background: transparent;
+    border: none;
+    color: #1a1a1a;
+  }
+
+  .search::placeholder {
+    color: grey;
+  }
+
+  .select {
+    color: #1a1a1a;
+    background: rgba(217, 217, 217, 0.36);
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: 5px;
+    border: none;
+    border-radius: 8px;
+    padding-left: 12px;
+    font-size: 16px;
+    line-height: 116%;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    height: 40px;
+    width: 100%;
+    text-decoration: none;
+    font-family: "Nunito", sans-serif;
+    align-items: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    outline: none;
+    cursor: pointer;
+  }
+
+  select option {
+    color: #1f2235;
+    background: rgba(217, 217, 217, 0.36) !important;
+  }
+
+  .select:invalid {
+    color: #1a1a1a !important;
+  }
+
+  .rightswapbox {
+    color: #1a1a1a;
+  }
+
+  .to {
+    color: #1a1a1a;
+  }
+
+  .input {
+    color: #1a1a1a;
+    background: rgba(217, 217, 217, 0.36);
+  }
+
+  .categorybar {
+    color: #1a1a1a;
+  }
+
+  .category {
+    color: #1a1a1a;
+  }
+
+  .category:hover {
+    background: rgb(229, 229, 229);
+  }
+
+  .headcategory {
+    background: rgb(211, 211, 211);
+  }
+
+  .headcategory:hover {
+    background: rgb(211, 211, 211);
+  }
+}
+
+.descmain {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+}
+
+.descpage {
+  margin-top: 40px;
+  display: flex;
+  // min-height: 520px;
+  padding-bottom: 40px;
+  padding-top: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+  width: 1200px;
+  padding-right: 30px;
+  padding-left: 20px;
+}
+
+.sampleProduct {
+  width: 500px;
+  margin-left: 40px;
+  border-radius: 16px;
+}
+
+.details {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+.prodid {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.profdetails {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.user {
+  width: 50px;
+  height: 50px;
+}
+
+.name {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+.userdesc {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.nftdesc {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.swapbutton {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 62px;
+  height: 62px;
+  margin-left: -31px;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.buttonswap {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background: transparent;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+
+.swapbox {
+  border-radius: 25px;
+  height: 180px;
+  width: 100%;
+  display: flex;
+}
+
+.leftswapbox {
+  flex-basis: 50%;
+  border-right: 2px solid rgba(220, 57, 252, 0.5);
+}
+
+.from {
+  margin-top: 10px;
+  text-align: left;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+.selectNFT {
+  margin-top: 5px;
+  margin-left: 20px;
+  text-align: left;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-right: 50px;
+}
+
+select option {
+  font-size: 16px;
+}
+
+.amountandbalance {
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+  justify-content: space-between;
+  margin-right: 50px;
+}
+
+.amount {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.unit {
+  font-size: 32px;
+  font-weight: 400;
+  text-align: right;
+}
+
+.balance {
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.rightswapbox {
+  flex-basis: 50%;
+}
+
+.to {
+  margin-top: 10px;
+  text-align: left;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+}
+
+.inputNFT {
+  margin-top: 5px;
+  margin-left: 20px;
+  text-align: left;
+  justify-content: center;
+  margin-right: 50px;
+  margin-bottom: 10px;
+}
+
+.input {
+  border-radius: 8px;
+  padding-left: 12px;
+  font-size: 16px;
+  line-height: 116%;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+  height: 40px;
+  width: 100%;
+  text-decoration: none;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: rgba(217, 217, 217, 0.36);
+  outline: none;
+  border: none;
+}
+
+@media only screen and (max-width: 1380px) {
+  .sampleProduct {
+    width: 450px;
+    margin-left: 30px;
+  }
+
+  .details {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .descpage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .sampleProduct {
+    width: 450px;
+    margin-left: 0px;
+    margin-top: 40px;
+  }
+
+  .profdetails {
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .descpage {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .sampleProduct {
+    width: 450px;
+  }
+
+  .swapbutton {
+    margin-left: calc(50% - 31px);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: 62px;
+    height: 62px;
+    margin-top: -31px;
+    cursor: pointer;
+  }
+
+  .name{
+    font-size: 20px;
+  }
+
+  .swapbox {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .leftswapbox {
+    flex-basis: 50%;
+    border-right: none;
+    padding-bottom: 20px;
+  }
+
+  .rightswapbox {
+    flex-basis: 50%;
+    padding-bottom: 20px;
+  }
+
+  .to {
+    margin-top: 0px;
+  }
+
+  .selectNFT {
+    margin-right: 14px;
+  }
+
+  .inputNFT {
+    margin-right: 30px;
+  }
+
+  .amountandbalance {
+    margin-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .descpage {
+    margin-top: 40px;
+    display: flex;
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    min-height: 620px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 50px;
+  }
+
+  .sampleProduct {
+    width: 250px;
+  }
+
+  .title{
+    margin-top: 12px;
+    font-size: 32px;
+  }
+
+  .profdetails{
+    margin: 12px 0px;
+  }
+
+  .name{
+    font-size: 10px;
+    margin-left: 8px;
+  }
+
+  .user{
+    width: 18px;
+  }
+}
