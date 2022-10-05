@@ -6,13 +6,15 @@ import ProfileImg from "../../images/Profile/Profile.svg";
 import { FaSearch } from "react-icons/fa";
 import Catalogue from "../Catalogue/Catalogue";
 import { ThemeContext } from "../../App";
-import { useAccount, useNetwork, useSwitchNetwork } from "wagmi";
+import { useAccount, useNetwork, useContract, useProvider } from "wagmi";
 import { Alchemy, Network } from "alchemy-sdk";
-import { BsWallet2 } from 'react-icons/bs'
+import { BsWallet2 } from "react-icons/bs";
+import axios from "axios";
+import GodwokenNFTs from "../../ABIs/GodwokenNFTs.json";
 
 function Profile() {
-  const [provider, setProvider] = useState(null);
   const [chainConfig, setConfig] = useState(null);
+  const [GodwokenNFTContract, setGodwokenNFTContract] = useState(null);
   const [alchemy, setAlchemy] = useState(null);
   const [userNFTs, setUserNFTs] = useState([]);
   const { chain } = useNetwork();
@@ -21,9 +23,18 @@ function Profile() {
 
   const { address, isConnected } = useAccount();
   console.log("isConnected", isConnected);
+
+  const provider = useProvider();
+  const contract = useContract({
+    addressOrName: "0x999680d5E06bda9b917b345123344A8D70c6d289",
+    contractInterface: GodwokenNFTs.abi,
+    signerOrProvider: provider,
+  });
+
   useEffect(() => {
     async function fetchData() {
       let config;
+      console.log("Chain Network", chain.network);
       if (chain) {
         switch (chain.network) {
           case "homestead":
@@ -50,30 +61,88 @@ function Profile() {
               network: Network.MATIC_MUMBAI,
             };
             break;
+          case "Godwoken Testnet":
+            config = {};
+            break;
         }
-        const alchemy = new Alchemy(config);
-        // Wallet address
-        const address = "elanhalpern.eth"; // static address
 
-        // Get all NFTs
-        const nfts = await alchemy.nft.getNftsForOwner(address);
-        setUserNFTs(nfts["ownedNfts"]);
+        try {
+          if (chain.network === "Godwoken Testnet") {
+            const bal = await contract.balanceOf(
+              "0x5d1d0b1d5790b1c88cc1e94366d3b242991dc05d"
+            );
+            const metadataURIs = [];
+            const itemArray = [];
+            for (var i = 0; i < bal; i++) {
+              const tokenId = await contract.tokenOfOwnerByIndex(
+                "0x5d1d0b1d5790b1c88cc1e94366d3b242991dc05d",
+                i
+              );
+              console.log(`At ${i} = ${tokenId.toString()}`);
+              const metadata_uri = await contract.tokenURI(tokenId.toString());
+              metadataURIs.push(metadata_uri);
+              console.log(`Metatdata = ${metadata_uri}`);
 
-        // Parse output
-        const numNfts = nfts["totalCount"];
-        const nftList = nfts["ownedNfts"];
+              const rawUri = `ipfs://QmVbZhfYHDyttyPjHQokVHVPYe7Bd5RdUrhxHoE6QimyYs/${tokenId.toString()}`;
+              const Uri = Promise.resolve(rawUri);
+              const owner = "0x5d1d0b1d5790b1c88cc1e94366d3b242991dc05d";
 
-        console.log(`Total NFTs owned by ${address}: ${numNfts} \n`);
+              const getUri = Uri.then((value) => {
+                let str = value;
+                let cleanUri = str.replace(
+                  "ipfs://",
+                  "https://gateway.pinata.cloud/ipfs/"
+                );
+                let metadata = axios.get(cleanUri).catch(function (error) {
+                  console.log(error.toJSON());
+                });
+                return metadata;
+              });
 
-        let i = 1;
+              getUri.then((value) => {
+                let rawImg = value.data.image;
+                var name = value.data.name;
+                var desc = value.data.description;
+                let image = rawImg.replace(
+                  "ipfs://",
+                  "https://gateway.pinata.cloud/ipfs/"
+                );
+                Promise.resolve(owner).then((value) => {
+                  let ownerW = value;
+                  let meta = {
+                    title: name,
+                    image: image,
+                    tokenId: tokenId.toString(),
+                    wallet: ownerW,
+                    description: desc,
+                  };
+                  console.log("Metatdata", meta);
+                  itemArray.push(meta);
+                });
+              });
+            }
+            await new Promise((r) => setTimeout(r, 5000));
+            console.log("Details", itemArray);
+            setUserNFTs(itemArray);
+          } else {
+            const alchemy = new Alchemy(config);
+            // Wallet address
+            const address = "elanhalpern.eth"; // static address
 
-        for (let nft of nftList) {
-          console.log(`${i}. ${nft.title}`);
-          i++;
-        }
+            // Get all NFTs
+            const nfts = await alchemy.nft.getNftsForOwner(address);
+            setUserNFTs(nfts["ownedNfts"]);
+
+            // Parse output
+            const numNfts = nfts["totalCount"];
+            const nftList = nfts["ownedNfts"];
+
+            console.log(`Total NFTs owned by ${address}: ${numNfts} \n`);
+          }
+        } catch (error) {}
+        console.log("User NFTs", userNFTs);
       }
 
-      setConfig(config);
       console.log("Chain", chain);
       console.log("useEffect called");
     }
@@ -97,9 +166,10 @@ function Profile() {
               <div className={styles.desc}>Wellington, New Zealand</div>
               <div className={styles.descdetails}>
                 NFTs (non-fungible tokens) are unique cryptographic tokens that
-                exist on a blockchain and cannot be replicated. "Tokenizing" these
-                real-world tangible assets makes buying, selling, and trading them
-                more efficient while reducing the probability of fraud.
+                exist on a blockchain and cannot be replicated. "Tokenizing"
+                these real-world tangible assets makes buying, selling, and
+                trading them more efficient while reducing the probability of
+                fraud.
               </div>
             </div>
           </div>
@@ -121,32 +191,32 @@ function Profile() {
                             <input className={styles.search} type='text' placeholder='Search' />
                         </div> */}
             </div>
-            {
-              isConnected ?
-                <div className={styles.nfts}>
-                  {userNFTs.map((nft, index) => {
-                    return (
-                      <Link to={`/profile/${nft.tokenId}`}
-                        state={{
-                          nft: nft
-                        }}>
-                        <Catalogue nft={nft} index={index} />
-                      </Link>
-                    );
-                  })}
-                </div> :
-                <div className={styles.notconnected}>
-                  <div>
-                    Connect your Wallet
-                  </div>
-                  <div style={{ marginLeft: "10px", marginTop: "3px" }}>
-                    <BsWallet2 />
-                  </div>
+            {isConnected ? (
+              <div className={styles.nfts}>
+                {userNFTs.map((nft, index) => {
+                  return (
+                    <Link
+                      to={`/profile/${nft.tokenId}`}
+                      state={{
+                        nft: nft,
+                      }}
+                    >
+                      <Catalogue nft={nft} index={index} />
+                    </Link>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className={styles.notconnected}>
+                <div>Connect your Wallet</div>
+                <div style={{ marginLeft: "10px", marginTop: "3px" }}>
+                  <BsWallet2 />
                 </div>
-            }
+              </div>
+            )}
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 }
