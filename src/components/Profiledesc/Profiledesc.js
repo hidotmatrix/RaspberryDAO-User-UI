@@ -5,7 +5,7 @@ import sampleProduct from "../../images/sampleProduct.svg";
 import Catalogue from "../Catalogue/Catalogue";
 import { FaUserCircle } from "react-icons/fa";
 import { ThemeContext } from "../../App";
-import { useAccount } from "wagmi";
+import { useAccount, useNetwork } from "wagmi";
 
 function Profiledesc() {
   const Truncate = (str) => {
@@ -13,12 +13,21 @@ function Profiledesc() {
   };
 
   const { address, isConnected } = useAccount();
+  const { chain } = useNetwork();
 
   const location = useLocation();
   console.log(location);
   const [nft, setNft] = useState(location.state.nft);
   console.log("Profile Descr NFT", nft);
-  const image_url = nft.media[0].gateway;
+
+  let image_url = "";
+  console.log("NFT details", nft);
+  if (chain.network === "Godwoken Testnet") {
+    image_url = nft.image;
+  } else {
+    image_url = nft.media[0].gateway;
+  }
+
   const themes = useContext(ThemeContext);
   const { theme, toggleTheme } = themes;
   window.scroll(0, 0);
