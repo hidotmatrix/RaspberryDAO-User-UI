@@ -6,13 +6,16 @@ import { useNetwork } from "wagmi";
 
 function Catalogue({ nft, index }) {
   const { chain } = useNetwork();
-
   let image_url = "";
-  console.log("NFT details", nft);
   if (chain.network === "Godwoken Testnet") {
     image_url = nft.image;
   } else {
-    image_url = nft.media[0].gateway;
+    if(nft.media.length!=0){
+      image_url = nft.media[0].gateway;
+    }
+    else{
+      image_url=sample
+    }
   }
 
   // console.log("NFT name", nft.title);
@@ -30,7 +33,7 @@ function Catalogue({ nft, index }) {
     <div className={theme === "light" ? styles.light : styles.dark}>
       <div className={styles.catalogue}>
         <div className={styles.container}>
-          <div clasName={styles.simage}>
+          <div className={styles.simage}>
             <img
               src={image_url}
               alt="Sample"

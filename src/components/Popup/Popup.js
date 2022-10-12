@@ -18,66 +18,62 @@ function Popup(props) {
     const themes = useContext(ThemeContext);
     const { theme } = themes;
 
-    const { connector, isConnected } = useAccount();
-    console.log("isConnected", isConnected);
+    const { address,connector, isConnected } = useAccount();
     useEffect(() => {
         async function fetchData() {
-            let config;
-            if (chain) {
-                switch (chain.network) {
-                    case "homestead":
-                        config = {
-                            apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
-                            network: Network.ETH_MAINNET,
-                        };
-                        break;
-                    case "matic":
-                        config = {
-                            apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
-                            network: Network.MATIC_MAINNET,
-                        };
-                        break;
-                    case "rinkeby":
-                        config = {
-                            apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
-                            network: Network.ETH_RINKEBY,
-                        };
-                        break;
-                    case "maticmum":
-                        config = {
-                            apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
-                            network: Network.MATIC_MUMBAI,
-                        };
-                        break;
-                }
+          let config;
+          if (chain) {
+            switch (chain.network) {
+              case "homestead":
+                config = {
+                  apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
+                  network: Network.ETH_MAINNET,
+                };
+                break;
+              case "matic":
+                config = {
+                  apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
+                  network: Network.MATIC_MAINNET,
+                };
+                break;
+              case "rinkeby":
+                config = {
+                  apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
+                  network: Network.ETH_RINKEBY,
+                };
+                break;
+              case "maticmum":
+                config = {
+                  apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
+                  network: Network.MATIC_MUMBAI,
+                };
+                break;
+              case "Godwoken Testnet":
+                config = {};
+                break;
+            }
+    
+            try {
+              if (chain.network === "Godwoken Testnet") {} else {
                 const alchemy = new Alchemy(config);
                 // Wallet address
-                const address = "elanhalpern.eth"; // static address
-
+                //const address = "elanhalpern.eth"; // static address
+    
                 // Get all NFTs
                 const nfts = await alchemy.nft.getNftsForOwner(address);
                 setUserNFTs(nfts["ownedNfts"]);
-
+    
                 // Parse output
                 const numNfts = nfts["totalCount"];
                 const nftList = nfts["ownedNfts"];
-
+    
                 console.log(`Total NFTs owned by ${address}: ${numNfts} \n`);
-
-                let i = 1;
-
-                for (let nft of nftList) {
-                    console.log(`${i}. ${nft.title}`);
-                    i++;
-                }
-            }
-
-            setConfig(config);
-            console.log("Chain", chain);
-            console.log("useEffect called");
+              }
+            } catch (error) {}
+          }
         }
         fetchData();
-    }, [chain, userNFTs]);
+      }, [chain, userNFTs]);
     return (
         <>
             <Backdrop show={props.show} switch={props.switch} />
@@ -89,7 +85,7 @@ function Popup(props) {
                     <div className={styles.nfts}>
                         {userNFTs.map((nft,index) => {
                             return (
-                                <Catalogue setSwap={props.setSwap} setOpen={props.setOpen} nft={nft} selected={props.selected} setSelected={props.setSelected} setIndex={props.setIndex} index={index}/>
+                                <Catalogue key ={index} setSwap={props.setSwap} setOpen={props.setOpen} nft={nft} selected={props.selected} setSelected={props.setSelected} setIndex={props.setIndex} index={index}/>
                             )
                         })}
                     </div>

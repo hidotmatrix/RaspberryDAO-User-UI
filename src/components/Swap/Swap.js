@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { useAccount, useNetwork, useContract, useProvider, useSwitchNetwork } from "wagmi";
 import styles from './Swap.module.scss'
 import bitcoinimg from '../../images/blockchain-icon.svg';
 import Popup from '../Popup/Popup';
@@ -9,6 +10,8 @@ import sample from "../../images/Sample.svg";
 function Swap() {
     const themes = useContext(ThemeContext);
     const { theme } = themes;
+    const { chain } = useNetwork();
+    const { chains, error, isLoading, pendingChainId, switchNetwork } = useSwitchNetwork()
     const GodwokenUrl = 'https://www.nervos.org/wp-content/uploads/2021/11/godwokenlive-810x456.png';
     const [open, setOpen] = useState(false);
     const [swap, setSwap] = useState(false);
@@ -18,6 +21,17 @@ function Swap() {
     const change = () => {
         setOpen(false);
     };
+
+    const swapHandler = async () =>{
+        console.log("Selected",selected)
+        try {
+            if(selected){
+
+            }
+        } catch (error) {
+            
+        }
+    } 
 
     return (
         <div className={theme === "light" ? styles.light : styles.dark}>
@@ -33,13 +47,14 @@ function Swap() {
                                 name='choosefrom'
                                 id='dropdown'
                                 className={styles.select}
+                                defaultValue={'DEFAULT'} 
                                 // onChange={event => setBlockChain(event.target.value)}
                                 required
                             >
                                 <option value='' disabled selected hidden> Choose a BlockChain</option>
-                                <option value='Ethereum'>Ethereum</option>
-                                <option value='Polygon'>Polygon</option>
-                                <option value='XDAI'>XDAI</option>
+                               { chain ? <option value='Polygon'>{chain.name}</option>:""}
+                                {/* <option value='Ethereum' onClick={() => switchNetwork?.(1)}>Ethereum</option>
+                                <option value='XDAI'>XDAI</option> */}
                             </select>
                         </div>
                         {
@@ -64,15 +79,15 @@ function Swap() {
                                 <button className={styles.choosenft}>Choose A NFT</button>
                             </div> : null}
                         <div className={styles.amountandbalance}>
-                            <div className={styles.amount}>{index}</div>
+                        {selected?<div className={styles.amount}>1</div>:<div className={styles.amount}>0</div>}
                             <div className={styles.unitandbalance}>
                                 <div className={styles.unit}> NFT </div>
-                                <div className={styles.balance}>Balance - 12.32</div>
+                                {/* <div className={styles.balance}>Balance - 12.32</div> */}
                             </div>
                         </div>
                     </div>
                     <div className={swap ? styles.swapbuttonopen : styles.swapbutton}>
-                        <button className={styles.buttonswap}>Swap</button>
+                        <button className={styles.buttonswap} onClick={swapHandler}>Swap</button>
                     </div>
                     <div className={styles.rightswapbox}>
                         <div className={styles.to}>To</div>
@@ -86,10 +101,10 @@ function Swap() {
                             </input>
                         </div>
                         <div className={swap ? styles.amountandbalancerightopen : styles.amountandbalanceright}>
-                            <div className={styles.amount}>0.0</div>
+                            {selected?<div className={styles.amount}>1</div>:<div className={styles.amount}>0</div>}
                             <div className={styles.unitandbalance}>
                                 <div className={styles.unit}> NFT </div>
-                                <div className={styles.balance}>Balance - 10.72</div>
+                                {/* <div className={styles.balance}>Balance - 10.72</div> */}
                             </div>
                         </div>
                     </div>

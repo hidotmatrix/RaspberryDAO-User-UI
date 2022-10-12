@@ -13,15 +13,12 @@ function Profiledesc() {
   };
 
   const { address, isConnected } = useAccount();
-  const { chain } = useNetwork();
+  const { chain,chains } = useNetwork();
 
   const location = useLocation();
-  console.log(location);
   const [nft, setNft] = useState(location.state.nft);
-  console.log("Profile Descr NFT", nft);
 
   let image_url = "";
-  console.log("NFT details", nft);
   if (chain.network === "Godwoken Testnet") {
     image_url = nft.image;
   } else {
@@ -64,6 +61,7 @@ function Profiledesc() {
                     name="choosefrom"
                     id="dropdown"
                     className={styles.select}
+                    defaultValue={'DEFAULT'}
                     // onChange={event => setReason(event.target.value)}
                     required
                   >
@@ -71,16 +69,16 @@ function Profiledesc() {
                       {" "}
                       Choose a BlockChain
                     </option>
-                    <option value="Ethereum">Ethereum</option>
-                    <option value="Polygon">Polygon</option>
-                    <option value="XDAI">XDAI</option>
+                    <option value="Polygon">{chain.name}</option>
+                    {/* <option value="Polygon">Polygon</option>
+                    <option value="XDAI">XDAI</option> */}
                   </select>
                 </div>
                 <div className={styles.amountandbalance}>
-                  <div className={styles.amount}>0.0</div>
+                  <div className={styles.amount}>1</div>
                   <div className={styles.unitandbalance}>
                     <div className={styles.unit}> NFT </div>
-                    <div className={styles.balance}>Balance - </div>
+                    {/* <div className={styles.balance}>Balance - </div> */}
                   </div>
                 </div>
               </div>
@@ -98,10 +96,10 @@ function Profiledesc() {
                   ></input>
                 </div>
                 <div className={styles.amountandbalance}>
-                  <div className={styles.amount}>0.0</div>
+                  <div className={styles.amount}>1</div>
                   <div className={styles.unitandbalance}>
                     <div className={styles.unit}> NFT </div>
-                    <div className={styles.balance}>Balance - </div>
+                    {/* <div className={styles.balance}>Balance - </div> */}
                   </div>
                 </div>
               </div>

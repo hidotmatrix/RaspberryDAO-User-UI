@@ -22,7 +22,6 @@ function Profile() {
   const { theme } = themes;
 
   const { address, isConnected } = useAccount();
-  console.log("isConnected", isConnected);
 
   const provider = useProvider();
   const contract = useContract({
@@ -34,7 +33,6 @@ function Profile() {
   useEffect(() => {
     async function fetchData() {
       let config;
-      console.log("Chain Network", chain.network);
       if (chain) {
         switch (chain.network) {
           case "homestead":
@@ -122,12 +120,11 @@ function Profile() {
               });
             }
             await new Promise((r) => setTimeout(r, 5000));
-            console.log("Details", itemArray);
             setUserNFTs(itemArray);
           } else {
             const alchemy = new Alchemy(config);
             // Wallet address
-            const address = "elanhalpern.eth"; // static address
+            //const address = "elanhalpern.eth"; // static address
 
             // Get all NFTs
             const nfts = await alchemy.nft.getNftsForOwner(address);
@@ -140,16 +137,11 @@ function Profile() {
             console.log(`Total NFTs owned by ${address}: ${numNfts} \n`);
           }
         } catch (error) {}
-        console.log("User NFTs", userNFTs);
       }
-
-      console.log("Chain", chain);
-      console.log("useEffect called");
     }
     fetchData();
   }, [chain, userNFTs]);
 
-  let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
     <>
       <div className={theme === "light" ? styles.light : styles.dark}>
@@ -200,8 +192,9 @@ function Profile() {
                       state={{
                         nft: nft,
                       }}
+                      key={index} 
                     >
-                      <Catalogue nft={nft} index={index} />
+                      <Catalogue nft={nft} index={index}/>
                     </Link>
                   );
                 })}

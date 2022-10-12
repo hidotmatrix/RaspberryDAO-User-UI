@@ -7,14 +7,13 @@ function SwapCatalogue(props) {
   const themes = useContext(ThemeContext);
   const { theme } = themes;
 
-  const swapAction = () => (
-    props.setOpen(false),
-    props.setSwap(true),
-    props.setSelected(props.nft),
+  const swapAction = () => {
+    console.log("Props",props)
+    props.setOpen(false);
+    props.setSwap(true);
+    props.setSelected(props.nft);
     props.setIndex(props.index + 1)
-  )
-
-  console.log("NFT details", props.nft);
+}
   const image_url = props.nft.media[0].gateway;
 
   const Truncate = (str) => {
@@ -25,7 +24,7 @@ function SwapCatalogue(props) {
     <div className={theme === "light" ? styles.light : styles.dark}>
       <div className={styles.catalogue}>
         <div className={styles.container}>
-          <div clasName={styles.simage}>
+          <div className={styles.simage}>
             <img src={image_url} alt="Sample" className={styles.sampleimage}></img>
           </div>
           <div className={styles.lowerbox}>
