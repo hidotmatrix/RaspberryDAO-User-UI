@@ -5,18 +5,31 @@ import sampleProduct from "../../images/sampleProduct.svg";
 import Catalogue from "../Catalogue/Catalogue";
 import { FaUserCircle } from "react-icons/fa";
 import { ThemeContext } from "../../App";
-import { useAccount, useNetwork } from "wagmi";
+import { useAccount, useNetwork,usePrepareContractWrite, useContractWrite } from "wagmi";
+import ABI from "../../ABIs/BridgeABI.json"
 
 function Profiledesc() {
+
+  const location = useLocation();
+  const [nft, setNft] = useState(location.state.nft);
+  const gasFees = "100"
+  const { config, error, isError } = usePrepareContractWrite({
+    addressOrName: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
+    contractInterface: ABI.abi,
+    functionName: 'deposit',
+    args: [nft.contract.address,nft.balance,gasFees,"71401",nft.tokenId,nft.tokenUri.gateway],
+    onSuccess(data) {
+      console.log("Success", data)
+    },
+  })
+  const { data, write } = useContractWrite(config)
+
   const Truncate = (str) => {
     return str.length > 40 ? str.substring(0, 37) + "..." : str;
   };
 
   const { address, isConnected } = useAccount();
-  const { chain,chains } = useNetwork();
-
-  const location = useLocation();
-  const [nft, setNft] = useState(location.state.nft);
+  const { chain } = useNetwork();
 
   let image_url = "";
   if (chain.network === "Godwoken Testnet") {
@@ -83,7 +96,8 @@ function Profiledesc() {
                 </div>
               </div>
               <div className={styles.swapbutton}>
-                <button className={styles.buttonswap}>SWAP</button>
+                <button className={styles.buttonswap} disabled={!write} onClick={() => write?.()}>SWAP</button>
+                {error && ( <div>An error occurred preparing the transaction: {error.message}</div> )}
               </div>
               <div className={styles.rightswapbox}>
                 <div className={styles.to}>TO</div>
