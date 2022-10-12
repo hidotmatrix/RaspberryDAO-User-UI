@@ -7,6 +7,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { ThemeContext } from "../../App";
 import { useAccount, useNetwork,usePrepareContractWrite, useContractWrite } from "wagmi";
 import ABI from "../../ABIs/BridgeABI.json"
+import { POLYGON_BRIDGE_ADDRESS } from "../../constants/constants";
 
 function Profiledesc() {
 
@@ -14,7 +15,7 @@ function Profiledesc() {
   const [nft, setNft] = useState(location.state.nft);
   const gasFees = "100"
   const { config, error, isError } = usePrepareContractWrite({
-    addressOrName: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
+    addressOrName: POLYGON_BRIDGE_ADDRESS,
     contractInterface: ABI.abi,
     functionName: 'deposit',
     args: [nft.contract.address,nft.balance,gasFees,"71401",nft.tokenId,nft.tokenUri.gateway],
@@ -97,7 +98,6 @@ function Profiledesc() {
               </div>
               <div className={styles.swapbutton}>
                 <button className={styles.buttonswap} disabled={!write} onClick={() => write?.()}>SWAP</button>
-                {error && ( <div>An error occurred preparing the transaction: {error.message}</div> )}
               </div>
               <div className={styles.rightswapbox}>
                 <div className={styles.to}>TO</div>
