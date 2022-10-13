@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { ethers } from 'ethers';
 import { useAccount, useNetwork, useContract, useProvider, useSwitchNetwork, usePrepareContractWrite, useContractWrite } from "wagmi";
 import styles from './Swap.module.scss'
 import bitcoinimg from '../../images/blockchain-icon.svg';
@@ -23,17 +24,21 @@ function Swap() {
     const change = () => {
         setOpen(false);
     };
-    const gasFees = "1000"; 
+    const gasFees = "0.01"; 
     const { config, error, isError } = usePrepareContractWrite({
         addressOrName: POLYGON_BRIDGE_ADDRESS,
         contractInterface: ABI.abi,
         functionName: 'deposit',
         args: [selected.contract.address,selected.balance,gasFees,"71401",selected.tokenId,selected.tokenUri.gateway],
+        overrides: { 
+            value: ethers.utils.parseEther(gasFees) 
+          },
         onSuccess(data) {
           console.log("Success", data)
         },
       })
       const { data, write } = useContractWrite(config)
+    console.log("DATA",data)  
 
     return (
         <div className={theme === "light" ? styles.light : styles.dark}>

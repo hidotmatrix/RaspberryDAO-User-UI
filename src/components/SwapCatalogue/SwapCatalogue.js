@@ -8,7 +8,6 @@ function SwapCatalogue(props) {
   const { theme } = themes;
 
   const swapAction = () => {
-    console.log("NFTs",props.nft)
     props.setOpen(false);
     props.setSwap(true);
     props.setSelected(props.nft);
