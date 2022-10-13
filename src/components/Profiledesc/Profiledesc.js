@@ -29,14 +29,13 @@ function Profiledesc() {
     functionName: 'deposit',
     args: [nft.contract.address,nft.balance,gasFees,"71401",nft.tokenId,nft.tokenUri.gateway],
     overrides: { 
-      value: ethers.utils.parseEther(gasFees) 
+      value: ethers.utils.parseEther("0.01") 
     },
     onSuccess(data) {
       console.log("Success", data)
     },
   })
   const { data, write } = useContractWrite(config)
-  console.log("DATA",data)  
 
   const Truncate = (str) => {
     return str.length > 40 ? str.substring(0, 37) + "..." : str;

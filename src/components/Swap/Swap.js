@@ -37,8 +37,7 @@ function Swap() {
           console.log("Success", data)
         },
       })
-      const { data, write } = useContractWrite(config)
-    console.log("DATA",data)  
+      const { data, write } = useContractWrite(config)  
 
     return (
         <div className={theme === "light" ? styles.light : styles.dark}>
