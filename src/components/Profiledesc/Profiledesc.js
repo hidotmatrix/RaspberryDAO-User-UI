@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { ethers } from "ethers";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Profiledesc.module.scss";
 import sampleProduct from "../../images/sampleProduct.svg";
@@ -7,17 +8,21 @@ import { FaUserCircle } from "react-icons/fa";
 import { ThemeContext } from "../../App";
 import { useAccount, useNetwork,usePrepareContractWrite, useContractWrite } from "wagmi";
 import ABI from "../../ABIs/BridgeABI.json"
+import {POLYGON_BRIDGE_ADDRESS} from "../../constants/constants"
 
 function Profiledesc() {
 
   const location = useLocation();
   const [nft, setNft] = useState(location.state.nft);
-  const gasFees = "100"
+  const gasFees = "0.01"
   const { config, error, isError } = usePrepareContractWrite({
-    addressOrName: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
+    addressOrName: POLYGON_BRIDGE_ADDRESS,
     contractInterface: ABI.abi,
     functionName: 'deposit',
-    args: [nft.contract.address,nft.balance,gasFees,"71401",nft.tokenId,nft.tokenUri.gateway],
+    args: [nft.contract.address,nft.balance,ethers.utils.parseEther(gasFees),"71401",nft.tokenId,nft.tokenUri.gateway],
+    overrides: {
+      value: ethers.utils.parseEther(gasFees),
+    },
     onSuccess(data) {
       console.log("Success", data)
     },

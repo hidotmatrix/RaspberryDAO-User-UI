@@ -1,37 +1,44 @@
 import React, { useState, useContext } from 'react'
-import { useAccount, useNetwork, useContract, useProvider, useSwitchNetwork } from "wagmi";
+import { ethers } from 'ethers';
+import { useAccount, useNetwork, useContract, useProvider, useSwitchNetwork, useContractWrite, usePrepareContractWrite } from "wagmi";
 import styles from './Swap.module.scss'
 import bitcoinimg from '../../images/blockchain-icon.svg';
 import Popup from '../Popup/Popup';
 import { ThemeContext } from "../../App";
 import Catalogue from '../Catalogue/Catalogue';
 import sample from "../../images/Sample.svg";
+import ABI from "../../ABIs/BridgeABI.json"
+import {POLYGON_BRIDGE_ADDRESS} from "../../constants/constants"
 
 function Swap() {
     const themes = useContext(ThemeContext);
     const { theme } = themes;
     const { chain } = useNetwork();
-    const { chains, error, isLoading, pendingChainId, switchNetwork } = useSwitchNetwork()
+    const { chains, isLoading, pendingChainId, switchNetwork } = useSwitchNetwork()
     const GodwokenUrl = 'https://www.nervos.org/wp-content/uploads/2021/11/godwokenlive-810x456.png';
     const [open, setOpen] = useState(false);
     const [swap, setSwap] = useState(false);
-    const [selected, setSelected] = useState();
+    const [selected, setSelected] = useState({contract:{address:""},balance:"",tokenId:"",tokenUri:{gateway:""}});
     const [index,setIndex] = useState("0.0");
 
     const change = () => {
         setOpen(false);
     };
 
-    const swapHandler = async () =>{
-        console.log("Selected",selected)
-        try {
-            if(selected){
-
-            }
-        } catch (error) {
-            
-        }
-    } 
+    const gasFees = "0.01"
+    const { config, error, isError } = usePrepareContractWrite({
+      addressOrName: POLYGON_BRIDGE_ADDRESS,
+      contractInterface: ABI.abi,
+      functionName: 'deposit',
+      args: [selected.contract.address,selected.balance,ethers.utils.parseEther(gasFees),"71401",selected.tokenId,selected.tokenUri.gateway],
+      overrides: {
+        value: ethers.utils.parseEther(gasFees),
+      },
+      onSuccess(data) {
+        console.log("Success", data)
+      },
+    })
+    const { data, write } = useContractWrite(config)
 
     return (
         <div className={theme === "light" ? styles.light : styles.dark}>
@@ -87,7 +94,7 @@ function Swap() {
                         </div>
                     </div>
                     <div className={swap ? styles.swapbuttonopen : styles.swapbutton}>
-                        <button className={styles.buttonswap} onClick={swapHandler}>Swap</button>
+                        <button className={styles.buttonswap}disabled={!write} onClick={() => write?.()}>Swap</button>
                     </div>
                     <div className={styles.rightswapbox}>
                         <div className={styles.to}>To</div>
