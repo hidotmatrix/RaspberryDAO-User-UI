@@ -4,6 +4,7 @@ import styles from "./Navbar.module.scss";
 import logoDark from "../../images/logoDark.svg";
 import logoWhite from "../../images/logoWhite.svg";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import {useNetwork} from "wagmi"
 import Toggle from "../../utils/Toggle/Toggle";
 import hamburger from "../../images/Hamburger.svg";
 import hamburgerdark from "../../images/HamburgerDark.svg";
@@ -11,6 +12,8 @@ import close from "../../images/close.svg";
 import { ThemeContext } from "../../App";
 
 function Navbar() {
+  const { chain } = useNetwork();
+
   const themes = useContext(ThemeContext);
   const { theme, toggleTheme } = themes;
   const nav = useLocation();
@@ -58,7 +61,7 @@ function Navbar() {
                   <div></div>
                 </NavLink>
               </li>
-              <li>
+            { chain.network !== "Godwoken Testnet"? <li>
                 <NavLink
                   to="/marketplace"
                   className={(nav) =>
@@ -70,7 +73,7 @@ function Navbar() {
                   Bridge NFT
                   <div></div>
                 </NavLink>
-              </li>
+              </li>:""}
 
               {/* <li>
                 <NavLink

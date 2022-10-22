@@ -14,6 +14,7 @@ function Profiledesc() {
 
   const location = useLocation();
   const [nft, setNft] = useState(location.state.nft);
+  console.log("NFTs",nft)
   const gasFees = "0.01"
   const { config, error, isError } = usePrepareContractWrite({
     addressOrName: POLYGON_BRIDGE_ADDRESS,
@@ -37,10 +38,15 @@ function Profiledesc() {
   const { chain } = useNetwork();
 
   let image_url = "";
-  if (chain.network === "Godwoken Testnet") {
-    image_url = nft.image;
-  } else {
-    image_url = nft.media[0].gateway;
+
+  try {
+    if (chain.network === "Godwoken Testnet") {
+      image_url = nft.image;
+    } else {
+      image_url = nft.media[0].gateway;
+    }
+  } catch (error) {
+    console.log("Error handle",error)
   }
 
   const themes = useContext(ThemeContext);
@@ -71,7 +77,7 @@ function Profiledesc() {
               </div>
             </div>
             <div className={styles.nftdesc}>{nft.description}</div>
-            <div className={styles.swapbox}>
+            {chain.network === "Godwoken Testnet"?"":<div className={styles.swapbox}>
               <div className={styles.leftswapbox}>
                 <div className={styles.from}>FROM</div>
                 <div className={styles.selectNFT}>
@@ -122,7 +128,7 @@ function Profiledesc() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>}
           </div>
         </div>
       </div>

@@ -2,19 +2,37 @@ import React, { useContext } from "react";
 import styles from "./SwapCatalogue.module.scss";
 import sample from "../../images/Sample.svg";
 import { ThemeContext } from "../../App";
+import {useNetwork} from "wagmi"
 
 function SwapCatalogue(props) {
   const themes = useContext(ThemeContext);
   const { theme } = themes;
 
   const swapAction = () => {
-    console.log("Props",props)
     props.setOpen(false);
     props.setSwap(true);
-    props.setSelected(props.nft);
+    const nft = props.nft;
+    nft.hasSelected = true;
+    props.setSelected(nft);
     props.setIndex(props.index + 1)
 }
-  const image_url = props.nft.media[0].gateway;
+const { chain } = useNetwork();
+let image_url = "";
+
+try {
+  if (chain.network === "Godwoken Testnet") {
+    image_url = props.nft.image;
+  } else {
+    if(props.nft.media.length!=0){
+      image_url = props.nft.media[0].gateway;
+    }
+    else{
+      image_url=sample
+    }
+  }
+} catch (error) {
+  console.log("Error handle",error)
+}
 
   const Truncate = (str) => {
     return str.length > 46 ? str.substring(0, 43) + "..." : str;

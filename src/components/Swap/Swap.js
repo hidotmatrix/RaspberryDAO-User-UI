@@ -18,7 +18,7 @@ function Swap() {
     const GodwokenUrl = 'https://www.nervos.org/wp-content/uploads/2021/11/godwokenlive-810x456.png';
     const [open, setOpen] = useState(false);
     const [swap, setSwap] = useState(false);
-    const [selected, setSelected] = useState({contract:{address:""},balance:"",tokenId:"",tokenUri:{gateway:""}});
+    const [selected, setSelected] = useState({contract:{address:""},balance:"",tokenId:"",tokenUri:{gateway:""},hasSelected:false});
     const [index,setIndex] = useState("0.0");
 
     const change = () => {
@@ -86,7 +86,7 @@ function Swap() {
                                 <button className={styles.choosenft}>Choose A NFT</button>
                             </div> : null}
                         <div className={styles.amountandbalance}>
-                        {selected?<div className={styles.amount}>1</div>:<div className={styles.amount}>0</div>}
+                        {selected.hasSelected?<div className={styles.amount}>1</div>:<div className={styles.amount}>0</div>}
                             <div className={styles.unitandbalance}>
                                 <div className={styles.unit}> NFT </div>
                                 {/* <div className={styles.balance}>Balance - 12.32</div> */}
@@ -108,7 +108,7 @@ function Swap() {
                             </input>
                         </div>
                         <div className={swap ? styles.amountandbalancerightopen : styles.amountandbalanceright}>
-                            {selected?<div className={styles.amount}>1</div>:<div className={styles.amount}>0</div>}
+                            {selected.hasSelected?<div className={styles.amount}>1</div>:<div className={styles.amount}>0</div>}
                             <div className={styles.unitandbalance}>
                                 <div className={styles.unit}> NFT </div>
                                 {/* <div className={styles.balance}>Balance - 10.72</div> */}

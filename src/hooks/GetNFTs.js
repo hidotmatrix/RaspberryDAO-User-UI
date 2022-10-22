@@ -25,7 +25,7 @@
 //       break;
 //   }
 //   console.log("Config", config);
-//   const alchemy = new Alchemy(config);
+//   const alchemy = new (config);
 //   const userNFTs = await alchemy.nft.getNftsForOwner(addr);
 
 //   return "";

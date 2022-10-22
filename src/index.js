@@ -37,16 +37,16 @@ const godwokenChain = {
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
-    chain.mainnet,
-    chain.polygon,
+    // chain.mainnet,
+    // chain.polygon,
     godwokenChain,
-    chain.rinkeby,
+    // chain.rinkeby,
     chain.polygonMumbai,
     ...(process.env.REACT_APP_ENABLE_TESTNETS === "true"
       ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
       : []),
   ],
-  [alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY }), publicProvider()]
+  [alchemyProvider({ apiKey: process.env.REACT_APP_ALCHEMY_API_KEY }), publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({

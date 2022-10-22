@@ -76,10 +76,8 @@ function Profile() {
                 "0x5d1d0b1d5790b1c88cc1e94366d3b242991dc05d",
                 i
               );
-              console.log(`At ${i} = ${tokenId.toString()}`);
               const metadata_uri = await contract.tokenURI(tokenId.toString());
               metadataURIs.push(metadata_uri);
-              console.log(`Metatdata = ${metadata_uri}`);
 
               const rawUri = `ipfs://QmVbZhfYHDyttyPjHQokVHVPYe7Bd5RdUrhxHoE6QimyYs/${tokenId.toString()}`;
               const Uri = Promise.resolve(rawUri);
@@ -113,8 +111,10 @@ function Profile() {
                     tokenId: tokenId.toString(),
                     wallet: ownerW,
                     description: desc,
+                    balance:1,
+                    contract:{address:"0x999680d5E06bda9b917b345123344A8D70c6d289"},
+                    tokenUri:{gateway:metadata_uri}
                   };
-                  console.log("Metatdata", meta);
                   itemArray.push(meta);
                 });
               });
@@ -123,8 +123,6 @@ function Profile() {
             setUserNFTs(itemArray);
           } else {
             const alchemy = new Alchemy(config);
-            // Wallet address
-            //const address = "elanhalpern.eth"; // static address
 
             // Get all NFTs
             const nfts = await alchemy.nft.getNftsForOwner(address);
@@ -134,7 +132,6 @@ function Profile() {
             const numNfts = nfts["totalCount"];
             const nftList = nfts["ownedNfts"];
 
-            console.log(`Total NFTs owned by ${address}: ${numNfts} \n`);
           }
         } catch (error) {}
       }

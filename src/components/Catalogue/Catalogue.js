@@ -7,21 +7,22 @@ import { useNetwork } from "wagmi";
 function Catalogue({ nft, index }) {
   const { chain } = useNetwork();
   let image_url = "";
-  if (chain.network === "Godwoken Testnet") {
-    image_url = nft.image;
-  } else {
-    if(nft.media.length!=0){
-      image_url = nft.media[0].gateway;
+  
+  try {
+    if (chain.network === "Godwoken Testnet") {
+      image_url = nft.image;
+    } else {
+      if(nft.media.length!=0){
+        image_url = nft.media[0].gateway;
+      }
+      else{
+        image_url=sample
+      }
     }
-    else{
-      image_url=sample
-    }
+  } catch (error) {
+    console.log("Error handle",error)
   }
 
-  // console.log("NFT name", nft.title);
-  // console.log("Image url", image_url);
-  // console.log("NFT description", nft.description);
-  // console.log("NFT Token Id", nft.tokenId);
   const themes = useContext(ThemeContext);
   const { theme } = themes;
 
