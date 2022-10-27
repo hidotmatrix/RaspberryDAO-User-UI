@@ -4,7 +4,7 @@ import styles from "./Navbar.module.scss";
 import logoDark from "../../images/logoDark.svg";
 import logoWhite from "../../images/logoWhite.svg";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import {useNetwork} from "wagmi"
+import {useAccount, useNetwork} from "wagmi"
 import Toggle from "../../utils/Toggle/Toggle";
 import hamburger from "../../images/Hamburger.svg";
 import hamburgerdark from "../../images/HamburgerDark.svg";
@@ -13,6 +13,7 @@ import { ThemeContext } from "../../App";
 
 function Navbar() {
   const { chain } = useNetwork();
+  const {isConnected} = useAccount()
 
   const themes = useContext(ThemeContext);
   const { theme, toggleTheme } = themes;
@@ -61,7 +62,7 @@ function Navbar() {
                   <div></div>
                 </NavLink>
               </li>
-            { chain.network !== "Godwoken Testnet"? <li>
+            { isConnected && chain.network !== "Godwoken Testnet"? <li>
                 <NavLink
                   to="/marketplace"
                   className={(nav) =>

@@ -34,11 +34,11 @@
   }
 
   .swapbutton {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(8, 0, 18, 0.1);
   }
 
   .swapbuttonopen {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(6, 9, 192, 0.375);
   }
 
   .buttonswap {
@@ -308,9 +308,8 @@
   text-decoration: none;
   background: transparent;
   font-family: "Poppins", sans-serif;
+  font-size: large;
   cursor: pointer;
-  font-weight: 200;
-  font-size: 20px;
 }
 
 .leftswapbox {

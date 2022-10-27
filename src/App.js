@@ -1,4 +1,4 @@
-import { createContext  , useState} from "react";
+import { createContext  , useEffect, useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Activity from "./components/Activity/Activity";
@@ -10,6 +10,21 @@ import Swap from "./components/Swap/Swap";
 export const ThemeContext = createContext(null);
 function App() {
   const [theme, setTheme] = useState("dark");
+  
+
+  useEffect(()=>{
+    async function callGethandler(){
+      await handleGetRequest()
+    }
+    callGethandler()
+  },[])
+
+  const handleGetRequest = async () =>{
+    const response = await fetch("https://raspberrydaobridge.herokuapp.com/")
+    if(response.status){
+      console.log("Response",response)
+    }
+ }
 
   const toggleTheme = () => {
     setTheme((cur) => (cur === "light" ? "dark" : "light"));

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { ethers } from 'ethers';
 import { useAccount, useNetwork, useContract, useProvider, useSwitchNetwork, useContractWrite, usePrepareContractWrite } from "wagmi";
 import styles from './Swap.module.scss'
@@ -8,11 +8,13 @@ import { ThemeContext } from "../../App";
 import Catalogue from '../Catalogue/Catalogue';
 import sample from "../../images/Sample.svg";
 import ABI from "../../ABIs/BridgeABI.json"
+import GodwokenNFTs from "../../ABIs/GodwokenNFTs.json";
 import {POLYGON_BRIDGE_ADDRESS} from "../../constants/constants"
 
 function Swap() {
     const themes = useContext(ThemeContext);
     const { theme } = themes;
+    const { address, isConnected } = useAccount();
     const { chain } = useNetwork();
     const { chains, isLoading, pendingChainId, switchNetwork } = useSwitchNetwork()
     const GodwokenUrl = 'https://www.nervos.org/wp-content/uploads/2021/11/godwokenlive-810x456.png';
@@ -20,25 +22,63 @@ function Swap() {
     const [swap, setSwap] = useState(false);
     const [selected, setSelected] = useState({contract:{address:""},balance:"",tokenId:"",tokenUri:{gateway:""},hasSelected:false});
     const [index,setIndex] = useState("0.0");
+    const [isApproved,setApproval] = useState(false)
 
     const change = () => {
         setOpen(false);
     };
+    
+  
+    const provider = useProvider();
+    const contract = useContract({
+      addressOrName: selected.contract.address,
+      contractInterface: GodwokenNFTs.abi,
+      signerOrProvider: provider,
+    });
+  
+    useEffect(()=>{
+      async function fetch(){
+        const approveFlag = await contract.isApprovedForAll(address,POLYGON_BRIDGE_ADDRESS);
+        console.log("Apprval flag",approveFlag)
+        setApproval(approveFlag);
+      }
+      fetch()
+    },[selected])
 
-    const gasFees = "0.01"
+    const gasFees = "0.001"
+    const bridgeFee = "0.01"
+    const totalFees = Number(gasFees)+Number(bridgeFee);
     const { config, error, isError } = usePrepareContractWrite({
       addressOrName: POLYGON_BRIDGE_ADDRESS,
       contractInterface: ABI.abi,
       functionName: 'deposit',
       args: [selected.contract.address,selected.balance,ethers.utils.parseEther(gasFees),"71401",selected.tokenId,selected.tokenUri.gateway],
       overrides: {
-        value: ethers.utils.parseEther(gasFees),
+        value: ethers.utils.parseEther(totalFees.toString()),
+        gasLimit:"100000",
       },
       onSuccess(data) {
         console.log("Success", data)
       },
     })
     const { data, write } = useContractWrite(config)
+
+    const approveContractWrite = usePrepareContractWrite({
+        addressOrName: selected.contract.address.length===0?"0x1097adc4251fd08Ac79c2a4f6D8E757268749F25":selected.contract.address,
+        contractInterface: GodwokenNFTs.abi,
+        functionName: 'setApprovalForAll',
+        args: [POLYGON_BRIDGE_ADDRESS,true],
+        overrides: {
+            gasLimit:"100000",
+          },
+        onSuccess(data) {
+          console.log("Success Approval", data)
+        },
+        onError(error){
+          console.log("Error",error)
+        }
+      })
+      const approvalWrite = useContractWrite(approveContractWrite.config)
 
     return (
         <div className={theme === "light" ? styles.light : styles.dark}>
@@ -94,7 +134,9 @@ function Swap() {
                         </div>
                     </div>
                     <div className={swap ? styles.swapbuttonopen : styles.swapbutton}>
-                        <button className={styles.buttonswap}disabled={!write} onClick={() => write?.()}>Swap</button>
+                        {write && isApproved ?<button className={styles.buttonswap} disabled={!write} onClick={() => write?.()}>Swap</button>:""}
+                        {write && !isApproved ?<button className={styles.buttonswap} disabled={!write} onClick={() => approvalWrite.write?.()}>Approve</button>:""}
+
                     </div>
                     <div className={styles.rightswapbox}>
                         <div className={styles.to}>To</div>

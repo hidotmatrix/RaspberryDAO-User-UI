@@ -11,6 +11,7 @@ import { Alchemy, Network } from "alchemy-sdk";
 import { BsWallet2 } from "react-icons/bs";
 import axios from "axios";
 import GodwokenNFTs from "../../ABIs/GodwokenNFTs.json";
+import { GODWOKEN_NFTS_ADDRESS } from "../../constants/constants";
 
 function Profile() {
   const [chainConfig, setConfig] = useState(null);
@@ -25,7 +26,7 @@ function Profile() {
 
   const provider = useProvider();
   const contract = useContract({
-    addressOrName: "0x999680d5E06bda9b917b345123344A8D70c6d289",
+    addressOrName: GODWOKEN_NFTS_ADDRESS,
     contractInterface: GodwokenNFTs.abi,
     signerOrProvider: provider,
   });
@@ -67,13 +68,13 @@ function Profile() {
         try {
           if (chain.network === "Godwoken Testnet") {
             const bal = await contract.balanceOf(
-              "0x5d1d0b1d5790b1c88cc1e94366d3b242991dc05d"
+              address
             );
             const metadataURIs = [];
             const itemArray = [];
             for (var i = 0; i < bal; i++) {
               const tokenId = await contract.tokenOfOwnerByIndex(
-                "0x5d1d0b1d5790b1c88cc1e94366d3b242991dc05d",
+                address,
                 i
               );
               const metadata_uri = await contract.tokenURI(tokenId.toString());
@@ -81,7 +82,7 @@ function Profile() {
 
               const rawUri = `ipfs://QmVbZhfYHDyttyPjHQokVHVPYe7Bd5RdUrhxHoE6QimyYs/${tokenId.toString()}`;
               const Uri = Promise.resolve(rawUri);
-              const owner = "0x5d1d0b1d5790b1c88cc1e94366d3b242991dc05d";
+              const owner = address;
 
               const getUri = Uri.then((value) => {
                 let str = value;
@@ -112,7 +113,7 @@ function Profile() {
                     wallet: ownerW,
                     description: desc,
                     balance:1,
-                    contract:{address:"0x999680d5E06bda9b917b345123344A8D70c6d289"},
+                    contract:{address:GODWOKEN_NFTS_ADDRESS},
                     tokenUri:{gateway:metadata_uri}
                   };
                   itemArray.push(meta);

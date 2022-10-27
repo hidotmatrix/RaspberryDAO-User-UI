@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Profiledesc.module.scss";
@@ -6,36 +6,81 @@ import sampleProduct from "../../images/sampleProduct.svg";
 import Catalogue from "../Catalogue/Catalogue";
 import { FaUserCircle } from "react-icons/fa";
 import { ThemeContext } from "../../App";
-import { useAccount, useNetwork,usePrepareContractWrite, useContractWrite } from "wagmi";
+import { useAccount, useNetwork,usePrepareContractWrite, useContractWrite, useContractRead, useProvider, useContract } from "wagmi";
 import ABI from "../../ABIs/BridgeABI.json"
-import {POLYGON_BRIDGE_ADDRESS} from "../../constants/constants"
+import GodwokenNFTs from "../../ABIs/GodwokenNFTs.json";
+import {GODWOKEN_NFTS_ADDRESS, POLYGON_BRIDGE_ADDRESS} from "../../constants/constants"
 
 function Profiledesc() {
 
   const location = useLocation();
   const [nft, setNft] = useState(location.state.nft);
-  console.log("NFTs",nft)
-  const gasFees = "0.01"
-  const { config, error, isError } = usePrepareContractWrite({
+  const [isApproved,setApproval] = useState(false)
+
+  const { address, isConnected } = useAccount();
+  const { chain } = useNetwork();
+
+  const provider = useProvider();
+  const contract = useContract({
+    addressOrName: nft.contract.address,
+    contractInterface: GodwokenNFTs.abi,
+    signerOrProvider: provider,
+  });
+
+  useEffect(()=>{
+    async function fetch(){
+      const approveFlag = await contract.isApprovedForAll(address,POLYGON_BRIDGE_ADDRESS);
+      setApproval(approveFlag);
+    }
+    fetch()
+  },[])
+  const gasFees = "0.001"
+  const bridgeFee = "0.01"
+  const totalFees = Number(gasFees)+Number(bridgeFee);
+  const { config, error } = usePrepareContractWrite({
     addressOrName: POLYGON_BRIDGE_ADDRESS,
     contractInterface: ABI.abi,
     functionName: 'deposit',
     args: [nft.contract.address,nft.balance,ethers.utils.parseEther(gasFees),"71401",nft.tokenId,nft.tokenUri.gateway],
     overrides: {
-      value: ethers.utils.parseEther(gasFees),
+      value: ethers.utils.parseEther(totalFees.toString()),
+      gasLimit:"100000",
     },
     onSuccess(data) {
       console.log("Success", data)
     },
+    onError(error){
+      console.log("Error",error)
+    }
   })
-  const { data, write } = useContractWrite(config)
+  const { write } = useContractWrite(config)
+
+  const approveContractWrite = usePrepareContractWrite({
+    addressOrName: nft.contract.address,
+    contractInterface: GodwokenNFTs.abi,
+    functionName: 'setApprovalForAll',
+    args: [POLYGON_BRIDGE_ADDRESS,true],
+    onSuccess(data) {
+      console.log("Success Approval", data)
+    },
+    onError(error){
+      console.log("Error",error)
+    }
+  })
+  const approvalWrite = useContractWrite(approveContractWrite.config);
+
+  const handleGetRequest = async () =>{
+     const response = await fetch("https://raspberrydaobridge.herokuapp.com/")
+     if(response.status){
+      write?.();
+     }
+     console.log("Response",response)
+  }
 
   const Truncate = (str) => {
     return str.length > 40 ? str.substring(0, 37) + "..." : str;
   };
 
-  const { address, isConnected } = useAccount();
-  const { chain } = useNetwork();
 
   let image_url = "";
 
@@ -107,8 +152,9 @@ function Profiledesc() {
                 </div>
               </div>
               <div className={styles.swapbutton}>
-                <button className={styles.buttonswap} disabled={!write} onClick={() => write?.()}>SWAP</button>
-                {error && ( <div>An error occurred preparing the transaction: {error.message}</div> )}
+              {write && isApproved ? <button className={styles.buttonswap} disabled={!write} onClick={() => {handleGetRequest()}}>SWAP</button>:""}
+              {write && !isApproved ? <button className={styles.buttonswap} disabled={!write} onClick={() => approvalWrite.write?.()}>Approve</button>:""}
+                {/* {error && ( <div>An error occurred preparing the transaction: {error.message}</div> )} */}
               </div>
               <div className={styles.rightswapbox}>
                 <div className={styles.to}>TO</div>
