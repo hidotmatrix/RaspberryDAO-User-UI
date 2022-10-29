@@ -54,6 +54,16 @@
     row-gap: 60px;
 }
 
+.notconnected {
+    display: flex;
+    justify-content: center;
+    color: #d400ff;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 36px;
+    align-items: center;
+  }
+
 @media only screen and (max-width:850px) {
     .popup{
         width: 620px;

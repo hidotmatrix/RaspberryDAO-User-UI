@@ -12,6 +12,7 @@ import { BsWallet2 } from "react-icons/bs";
 import axios from "axios";
 import GodwokenNFTs from "../../ABIs/GodwokenNFTs.json";
 import { GODWOKEN_NFTS_ADDRESS } from "../../constants/constants";
+import LoadingSpinner from "../spinner/LoadingSpinner";
 
 function Profile() {
   const [chainConfig, setConfig] = useState(null);
@@ -21,6 +22,9 @@ function Profile() {
   const { chain } = useNetwork();
   const themes = useContext(ThemeContext);
   const { theme } = themes;
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const { address, isConnected } = useAccount();
 
@@ -33,6 +37,7 @@ function Profile() {
 
   useEffect(() => {
     async function fetchData() {
+      setIsLoading(true)
       let config;
       if (chain) {
         switch (chain.network) {
@@ -122,6 +127,7 @@ function Profile() {
             }
             await new Promise((r) => setTimeout(r, 5000));
             setUserNFTs(itemArray);
+            setIsLoading(false)
           } else {
             const alchemy = new Alchemy(config);
 
@@ -132,17 +138,18 @@ function Profile() {
             // Parse output
             const numNfts = nfts["totalCount"];
             const nftList = nfts["ownedNfts"];
-
+            setIsLoading(false)
           }
-        } catch (error) {}
+        } catch (error) {} finally {setIsLoading(false)}
       }
     }
     fetchData();
-  }, [chain, userNFTs]);
+  }, [chain]);
 
   return (
     <>
       <div className={theme === "light" ? styles.light : styles.dark}>
+      {isLoading?<LoadingSpinner isApprovaltx={false} isSwaptx={false}/>:
         <div className={styles.profile}>
           <div className={styles.profiledesc}>
             <div className={styles.bannerimage}>
@@ -181,22 +188,28 @@ function Profile() {
                             <input className={styles.search} type='text' placeholder='Search' />
                         </div> */}
             </div>
-            {isConnected ? (
-              <div className={styles.nfts}>
-                {userNFTs.map((nft, index) => {
-                  return (
-                    <Link
-                      to={`/profile/${nft.tokenId}`}
-                      state={{
-                        nft: nft,
-                      }}
-                      key={index} 
-                    >
-                      <Catalogue nft={nft} index={index}/>
-                    </Link>
-                  );
-                })}
-              </div>
+            {isConnected ? (<div>
+             {userNFTs.length!==0 ? <div className={styles.nfts}>
+             {userNFTs.map((nft, index) => {
+               return (
+                 <Link
+                   to={`/profile/${nft.tokenId}`}
+                   state={{
+                     nft: nft,
+                   }}
+                   key={index} 
+                 >
+                   <Catalogue nft={nft} index={index}/>
+                 </Link>
+               );
+             })}
+           </div>:<div className={styles.notconnected}>
+                <div>You don't have any NFT in your wallet</div>
+                <div style={{ marginLeft: "10px", marginTop: "3px" }}>
+                  <BsWallet2 />
+                </div>
+              </div>}
+           </div>
             ) : (
               <div className={styles.notconnected}>
                 <div>Connect your Wallet</div>
@@ -207,6 +220,7 @@ function Profile() {
             )}
           </div>
         </div>
+        }
       </div>
     </>
   );

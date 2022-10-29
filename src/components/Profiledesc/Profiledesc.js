@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { Link, useLocation } from "react-router-dom";
+import { CButton,CSpinner } from '@coreui/react';
 import styles from "./Profiledesc.module.scss";
 import sampleProduct from "../../images/sampleProduct.svg";
 import Catalogue from "../Catalogue/Catalogue";
@@ -10,8 +11,12 @@ import { useAccount, useNetwork,usePrepareContractWrite, useContractWrite, useCo
 import ABI from "../../ABIs/BridgeABI.json"
 import GodwokenNFTs from "../../ABIs/GodwokenNFTs.json";
 import {GODWOKEN_NFTS_ADDRESS, POLYGON_BRIDGE_ADDRESS} from "../../constants/constants"
+import LoadingSpinner from "../spinner/LoadingSpinner";
+import { useNavigate } from 'react-router-dom';
 
 function Profiledesc() {
+
+  const navigate = useNavigate();
 
   const location = useLocation();
   const [nft, setNft] = useState(location.state.nft);
@@ -19,6 +24,12 @@ function Profiledesc() {
 
   const { address, isConnected } = useAccount();
   const { chain } = useNetwork();
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [isApprovaltx,seApprovaltx] = useState(false)
+  const [isSwaptx,setSwaptx]= useState(false)
 
   const provider = useProvider();
   const contract = useContract({
@@ -53,7 +64,31 @@ function Profiledesc() {
       console.log("Error",error)
     }
   })
-  const { write } = useContractWrite(config)
+  const swapWrite = useContractWrite(config)
+
+  useEffect(()=>{
+    async function fetch(){
+      setSwaptx(true)
+      setIsLoading(true)
+      try {
+        const data = await swapWrite.data.wait()
+        const timerId = setTimeout(() => {
+          navigate("/profile");
+          clearTimeout(timerId);
+       }, 1000);
+        console.log("Data inner",data)
+      } catch (error) {
+        console.log("Error catch",error)
+        setIsLoading(false)
+        setSwaptx(false)
+      }finally{
+        setIsLoading(false)
+        setSwaptx(false)
+      }
+     
+    }
+    fetch()
+  },[swapWrite.data])
 
   const approveContractWrite = usePrepareContractWrite({
     addressOrName: nft.contract.address,
@@ -69,12 +104,31 @@ function Profiledesc() {
   })
   const approvalWrite = useContractWrite(approveContractWrite.config);
 
+  useEffect(()=>{
+    async function fetch(){
+      seApprovaltx(true)
+      setIsLoading(true)
+      try {
+        const data = await approvalWrite.data.wait()
+        console.log("Data inner",data)
+      } catch (error) {
+        console.log("Error catch",error)
+        setIsLoading(false)
+        seApprovaltx(false)
+      }finally{
+        setIsLoading(false)
+        seApprovaltx(false)
+      }
+     
+    }
+    fetch()
+  },[approvalWrite.data])
+
   const handleGetRequest = async () =>{
      const response = await fetch("https://raspberrydaobridge.herokuapp.com/")
      if(response.status){
-      write?.();
+      swapWrite.write?.();
      }
-     console.log("Response",response)
   }
 
   const Truncate = (str) => {
@@ -100,6 +154,7 @@ function Profiledesc() {
 
   return (
     <div className={theme === "light" ? styles.light : styles.dark}>
+     {isLoading?<LoadingSpinner isApprovaltx={isApprovaltx} isSwaptx={isSwaptx}/>:
       <div className={styles.descmain}>
         <div className={styles.descpage}>
           <div className={styles.imgDiv}>
@@ -152,8 +207,8 @@ function Profiledesc() {
                 </div>
               </div>
               <div className={styles.swapbutton}>
-              {write && isApproved ? <button className={styles.buttonswap} disabled={!write} onClick={() => {handleGetRequest()}}>SWAP</button>:""}
-              {write && !isApproved ? <button className={styles.buttonswap} disabled={!write} onClick={() => approvalWrite.write?.()}>Approve</button>:""}
+              {swapWrite.write && isApproved && !isLoading? <button className={styles.buttonswap} disabled={!swapWrite.write} onClick={() => {handleGetRequest()}}>SWAP</button>:""}
+              {approvalWrite.write && !isApproved ? <button className={styles.buttonswap} disabled={!approvalWrite.write} onClick={() => approvalWrite.write?.()}>Approve</button>:""}
                 {/* {error && ( <div>An error occurred preparing the transaction: {error.message}</div> )} */}
               </div>
               <div className={styles.rightswapbox}>
@@ -177,7 +232,7 @@ function Profiledesc() {
             </div>}
           </div>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

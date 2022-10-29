@@ -22,7 +22,6 @@ function App() {
   const handleGetRequest = async () =>{
     const response = await fetch("https://raspberrydaobridge.herokuapp.com/")
     if(response.status){
-      console.log("Response",response)
     }
  }
 

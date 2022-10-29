@@ -20,16 +20,20 @@ function Popup(props) {
     const themes = useContext(ThemeContext);
     const { theme } = themes;
 
-  const provider = useProvider();
-  const contract = useContract({
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const provider = useProvider();
+    const contract = useContract({
     addressOrName: GODWOKEN_NFTS_ADDRESS,
     contractInterface: GodwokenNFTs.abi,
     signerOrProvider: provider,
-  });
+    });
 
     const { address,connector, isConnected } = useAccount();
     useEffect(() => {
         async function fetchData() {
+          setIsLoading(true)
           let config;
           if (chain) {
             switch (chain.network) {
@@ -74,10 +78,8 @@ function Popup(props) {
                     address,
                     i
                   );
-                  console.log(`At ${i} = ${tokenId.toString()}`);
                   const metadata_uri = await contract.tokenURI(tokenId.toString());
                   metadataURIs.push(metadata_uri);
-                  console.log(`Metatdata = ${metadata_uri}`);
     
                   const rawUri = `ipfs://QmVbZhfYHDyttyPjHQokVHVPYe7Bd5RdUrhxHoE6QimyYs/${tokenId.toString()}`;
                   const Uri = Promise.resolve(rawUri);
@@ -121,6 +123,7 @@ function Popup(props) {
                 }
                 await new Promise((r) => setTimeout(r, 5000));
                 setUserNFTs(itemArray);
+                setIsLoading(false)
               } else {
                 const alchemy = new Alchemy(config);
                 
@@ -131,13 +134,13 @@ function Popup(props) {
                 // Parse output
                 const numNfts = nfts["totalCount"];
                 const nftList = nfts["ownedNfts"];
-    
+                setIsLoading(false)
               }
-            } catch (error) {}
+            } catch (error) {} finally{setIsLoading(false)}
           }
         }
         fetchData();
-      }, [chain, userNFTs]);
+      }, [chain]);
     return (
         <>
             <Backdrop show={props.show} switch={props.switch} />
@@ -146,13 +149,23 @@ function Popup(props) {
                     <img src={cross} alt="" onClick={props.switch}></img>
                 </div>
                 <div className={styles.catalogues}>
-                    <div className={styles.nfts}>
+                {isLoading?<div className={styles.notconnected}>
+                <div>Loading NFTs...</div>
+                <div style={{ marginLeft: "10px", marginTop: "3px" }}>
+                  <BsWallet2 />
+                </div>
+                </div>:<div>{userNFTs.length!==0?<div className={styles.nfts}>
                         {userNFTs.map((nft,index) => {
                             return (
                                 <Catalogue key ={index} setSwap={props.setSwap} setOpen={props.setOpen} nft={nft} selected={props.selected} setSelected={props.setSelected} setIndex={props.setIndex} index={index}/>
                             )
                         })}
-                    </div>
+                    </div>:<div className={styles.notconnected}>
+                <div>You don't have any NFT</div>
+                <div style={{ marginLeft: "10px", marginTop: "3px" }}>
+                  <BsWallet2 />
+                </div>
+                </div>}</div>}
                 </div>
             </div>
         </>
