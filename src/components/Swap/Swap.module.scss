@@ -8,10 +8,12 @@
   }
 
   .swapbox {
-    background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0) 100%);
-    border: 0.5px solid rgba($color: #FFFFFF, $alpha: 0.4);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    border: 0.5px solid rgba($color: #ffffff, $alpha: 0.4);
     backdrop-filter: blur(400px);
     // background-image: url("../../images/Bg.svg");
     // background-size: cover;
@@ -28,9 +30,11 @@
   }
 
   .choose:hover {
-    background: linear-gradient(90deg,
-        rgb(116, 2, 145) 12%,
-        rgb(255, 119, 214) 100%);
+    background: linear-gradient(
+      90deg,
+      rgb(116, 2, 145) 12%,
+      rgb(255, 119, 214) 100%
+    );
   }
 
   .swapbutton {
@@ -53,7 +57,7 @@
   .select {
     color: #ffffff;
     background: rgba(217, 217, 217, 0.36);
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     -moz-appearance: none;
     background: rgba(217, 217, 217, 0.36);
     -webkit-appearance: none;
@@ -66,7 +70,7 @@
   select option {
     color: #1f2235;
     background: rgba(217, 217, 217, 0.36) !important;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   .select:invalid {
@@ -74,23 +78,29 @@
   }
 
   .amountandbalance {
-    background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
     border: 3px solid #adbdbd;
   }
 
   .amountandbalanceright {
-    background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
     border: 3px solid #adbdbd;
   }
 
   .amountandbalancerightopen {
-    background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
     border: 3px solid #adbdbd;
   }
 
@@ -105,7 +115,7 @@
   .input {
     color: white;
     background: rgba(217, 217, 217, 0.36);
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   .edit:hover {
@@ -123,9 +133,11 @@
   }
 
   .swapbox {
-    background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
     border: 0.5px solid #1a1a1a;
     backdrop-filter: blur(400px);
     // background-image: url("../../images/Bg.svg");
@@ -143,9 +155,11 @@
   }
 
   .choose:hover {
-    background: linear-gradient(90deg,
-        rgba(177, 4, 220, 0.611) 12%,
-        rgba(255, 119, 214, 0.681) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(177, 4, 220, 0.611) 12%,
+      rgba(255, 119, 214, 0.681) 100%
+    );
   }
 
   .swapbutton {
@@ -168,7 +182,7 @@
   .select {
     color: #1a1a1a;
     background: rgba(136, 136, 136, 0.36);
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     -moz-appearance: none;
     -webkit-appearance: none;
     background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
@@ -187,23 +201,29 @@
   }
 
   .amountandbalance {
-    background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
     border: 3px solid #8f8f8f;
   }
 
   .amountandbalanceright {
-    background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
     border: 3px solid #8f8f8f;
   }
 
   .amountandbalancerightopen {
-    background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
     border: 3px solid #8f8f8f;
   }
 
@@ -218,9 +238,14 @@
   .input {
     color: #1a1a1a;
     background: rgba(136, 136, 136, 0.36);
-    font-family: 'Poppins', sans-serif;
-
+    font-family: "Poppins", sans-serif;
   }
+}
+
+.tooltip {
+  //bottom: 24px;
+  margin: -196px !important;
+  width: 140px !important;
 }
 
 .swappage {
@@ -338,7 +363,7 @@
 
 .aboutcard {
   margin-left: 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   position: relative;
 }
 
@@ -440,7 +465,7 @@ select option {
   backdrop-filter: blur(400px);
   border-radius: 50px;
   padding: 15px 40px 15px 40px;
-  margin-top: 170px;
+  //margin-top: 170px;
 }
 
 .amount {
@@ -520,6 +545,12 @@ select option {
 // }
 
 @media only screen and (max-width: 1080px) {
+  .tooltip {
+    //bottom: 24px;
+    margin: -196px !important;
+    width: 140px !important;
+  }
+
   .swapbox {
     backdrop-filter: blur(400px);
     border-radius: 25px;
@@ -545,6 +576,12 @@ select option {
 }
 
 @media only screen and (max-width: 640px) {
+  .tooltip {
+    //bottom: 24px;
+    margin: 24 !important;
+    width: 140px !important;
+  }
+
   .heading {
     font-size: 28px;
     padding-bottom: 24px;
@@ -571,7 +608,7 @@ select option {
     margin-left: 0px;
   }
 
-  .edit{
+  .edit {
     margin-top: 10px;
   }
 

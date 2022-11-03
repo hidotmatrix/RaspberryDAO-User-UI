@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ethers } from "ethers";
+import axios from "axios";
 import {
   useAccount,
   useNetwork,
@@ -9,6 +10,7 @@ import {
   useContractWrite,
   usePrepareContractWrite,
 } from "wagmi";
+import raspberrydao_pic_3 from "../../images/raspberrydao_pic_3.jpg";
 import styles from "./Swap.module.scss";
 import bitcoinimg from "../../images/blockchain-icon.svg";
 import Popup from "../Popup/Popup";
@@ -17,9 +19,17 @@ import Catalogue from "../Catalogue/Catalogue";
 import sample from "../../images/Sample.svg";
 import ABI from "../../ABIs/BridgeABI.json";
 import GodwokenNFTs from "../../ABIs/GodwokenNFTs.json";
-import { POLYGON_BRIDGE_ADDRESS } from "../../constants/constants";
+import {
+  GODWOKEN_NFTS_ADDRESS,
+  POLYGON_BRIDGE_ADDRESS,
+} from "../../constants/constants";
 import LoadingSpinner from "../spinner/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
+import { BsQuestionCircle } from "react-icons/bs";
+import ReactTooltip from "react-tooltip";
+
+const GODWOKEN_RPC_URL = "https://godwoken-testnet-v1.ckbapp.dev";
+const godwokenProvider = new ethers.providers.JsonRpcProvider(GODWOKEN_RPC_URL);
 
 function Swap() {
   const navigate = useNavigate();
@@ -48,6 +58,9 @@ function Swap() {
   const [isApprovaltx, seApprovaltx] = useState(false);
   const [isSwaptx, setSwaptx] = useState(false);
 
+  const [probableGodwokenTitle, setGodwokenProbableTitle] = useState("");
+  const [probableMintingNFT, setProbableMintingNFT] = useState("");
+
   const change = () => {
     setOpen(false);
   };
@@ -57,6 +70,12 @@ function Swap() {
     addressOrName: selected.contract.address,
     contractInterface: GodwokenNFTs.abi,
     signerOrProvider: provider,
+  });
+
+  const godwokenContract = useContract({
+    addressOrName: GODWOKEN_NFTS_ADDRESS,
+    contractInterface: GodwokenNFTs.abi,
+    signerOrProvider: godwokenProvider,
   });
 
   useEffect(() => {
@@ -70,6 +89,64 @@ function Swap() {
     }
     fetch();
   }, [selected, isApproved]);
+
+  useEffect(() => {
+    async function fetch() {
+      const totalSupply = await godwokenContract.totalSupply();
+      console.log("Total Sypply", Number(totalSupply.toString()));
+      const tokenId = Number(totalSupply.toString()) + 1;
+      const rawUri = `ipfs://QmVbZhfYHDyttyPjHQokVHVPYe7Bd5RdUrhxHoE6QimyYs/${tokenId}`;
+      const Uri = Promise.resolve(rawUri);
+      const owner = address;
+
+      const getUri = Uri.then((value) => {
+        let str = value;
+        let cleanUri = str.replace(
+          "ipfs://",
+          "https://gateway.pinata.cloud/ipfs/"
+        );
+        let metadata = axios.get(cleanUri).catch(function (error) {
+          console.log(error.toJSON());
+        });
+        return metadata;
+      });
+
+      try {
+        getUri.then((value) => {
+          let rawImg = value.data.image;
+          var name = value.data.name;
+          var desc = value.data.description;
+          let image = rawImg.replace(
+            "ipfs://",
+            "https://gateway.pinata.cloud/ipfs/"
+          );
+          console.log("Image", image);
+
+          Promise.resolve(owner).then((value) => {
+            let ownerW = value;
+            let meta = {
+              title: name,
+              image: image,
+              tokenId: tokenId.toString(),
+              wallet: ownerW,
+              description: desc,
+              balance: 1,
+              contract: { address: GODWOKEN_NFTS_ADDRESS },
+              tokenUri: { gateway: "" },
+            };
+            setProbableMintingNFT(image);
+            setGodwokenProbableTitle(name);
+            // console.log("Metadata", meta);
+            // //itemArray.push(meta);
+          });
+        });
+        await new Promise((r) => setTimeout(r, 1000));
+      } catch (error) {
+        setProbableMintingNFT(raspberrydao_pic_3);
+      }
+    }
+    fetch();
+  }, []);
 
   const gasFees = "0.001";
   const bridgeFee = "0.01";
@@ -223,7 +300,6 @@ function Swap() {
                           {" "}
                           {selected.title}{" "}
                         </div>
-                        {/* <div className={styles.carddesc}> From INDIA </div> */}
                         <div
                           className={styles.edit}
                           onClick={() => setOpen(true)}
@@ -247,7 +323,6 @@ function Swap() {
                   )}
                   <div className={styles.unitandbalance}>
                     <div className={styles.unit}> NFT </div>
-                    {/* <div className={styles.balance}>Balance - 12.32</div> */}
                   </div>
                 </div>
               </div>
@@ -280,7 +355,7 @@ function Swap() {
                 <div className={styles.inputNFT}>
                   <img
                     src={GodwokenUrl}
-                    alt="Bitcoin"
+                    alt="Ethereum"
                     className={styles.bitcoinimg}
                   ></img>
                   <input
@@ -290,6 +365,48 @@ function Swap() {
                     disabled
                   ></input>
                 </div>
+                {swap ? (
+                  <div className={styles.cardinfo}>
+                    <div className={styles.card}>
+                      <div className={styles.simage}>
+                        <img
+                          src={probableMintingNFT}
+                          alt="Sample"
+                          className={styles.sampleimage}
+                        ></img>
+                      </div>
+                      <ReactTooltip id="registerTip" effect="solid">
+                        Most probably you will be minted this NFT on Godowken,
+                        but there's a slight chance you will get the next NFT in
+                        the collection on Godowken, so mint it right away!
+                      </ReactTooltip>
+                      <div className={styles.aboutcard}>
+                        <div className={styles.cardhead}>
+                          {" "}
+                          {probableGodwokenTitle}{" "}
+                        </div>
+                        <div
+                          className={styles.edit}
+                          onClick={() => setOpen(true)}
+                        >
+                          Edit
+                        </div>
+                        <div>
+                          <BsQuestionCircle
+                            fontSize="1.5em"
+                            data-tip
+                            data-for="registerTip"
+                            data-place="top"
+                            data-padding="36px"
+                            data-class={styles.tooltip}
+                            data-border={true}
+                            data-multiline={true}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
                 <div
                   className={
                     swap

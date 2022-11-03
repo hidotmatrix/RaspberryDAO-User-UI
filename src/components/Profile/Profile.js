@@ -120,7 +120,7 @@ function Profile() {
                 });
               });
             }
-            await new Promise((r) => setTimeout(r, 5000));
+            await new Promise((r) => setTimeout(r, 2000));
             setUserNFTs(itemArray);
             setIsLoading(false);
           } else {

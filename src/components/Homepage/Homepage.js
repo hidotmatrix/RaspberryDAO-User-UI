@@ -25,7 +25,7 @@ function Homepage() {
         setIndex((prevIndex) => {
           return prevIndex + 1 < l.length ? prevIndex + 1 : 0;
         });
-      }, 5000);
+      }, 4000);
     };
     Changing();
     return () => {
