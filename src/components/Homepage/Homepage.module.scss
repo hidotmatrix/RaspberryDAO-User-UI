@@ -19,36 +19,35 @@
     color: #6245ed;
   }
 
-  .firsttop{
+  .firsttop {
     color: white;
   }
 }
 
-
 .light {
-    .homepage {
-      background-color: #eae6f0;
-    }
-  
-    .maincontent {
-      color: #1f2235;
-    }
-  
-    .btn {
-      background-color: #6245ed;
-      color: white;
-    }
-  
-    .btn:hover {
-      background-color: #1f2235;
-      color: white;
-    }
-
-    .firsttop{
-      color: black;
-    }
+  .homepage {
+    background-color: #eae6f0;
   }
-  
+
+  .maincontent {
+    color: #1f2235;
+  }
+
+  .btn {
+    background-color: #6245ed;
+    color: white;
+  }
+
+  .btn:hover {
+    background-color: #1f2235;
+    color: white;
+  }
+
+  .firsttop {
+    color: black;
+  }
+}
+
 .homepage {
   padding-top: 80px;
   min-height: calc(100vh - 100px);
@@ -118,15 +117,15 @@
   .main img {
     padding-top: 20px;
     width: 980px;
-    height: 680px;
+    height: 9 80px;
   }
 }
 
 @media only screen and (max-width: 1900px) {
   .main img {
     padding-top: 20px;
-    width: 900px;
-    height: 650px;
+    width: 750px;
+    height: 750px;
     margin-right: 42px;
   }
 }
@@ -134,8 +133,8 @@
 @media only screen and (max-width: 1800px) {
   .main img {
     padding-top: 20px;
-    width: 800px;
-    height: 600px;
+    width: 650px;
+    height: 6500px;
     margin-right: 42px;
   }
 }
@@ -143,8 +142,8 @@
 @media only screen and (max-width: 1600px) {
   .main img {
     padding-top: 20px;
-    width: 700px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     margin-right: 42px;
   }
 
@@ -177,8 +176,8 @@
 @media only screen and (max-width: 1350px) {
   .main img {
     padding-top: 20px;
-    width: 600px;
-    height: 420px;
+    width: 500px;
+    height: 500px;
     margin-right: 42px;
   }
 }
@@ -186,8 +185,8 @@
 @media only screen and (max-width: 1250px) {
   .main img {
     padding-top: 20px;
-    width: 500px;
-    height: 360px;
+    width: 450px;
+    height: 450px;
     margin-right: 42px;
   }
 
@@ -276,7 +275,7 @@
     padding-top: 0px;
     width: 250px;
     margin-left: calc(50% - 125px);
-    height: 200px;
+    height: 250px;
     padding-bottom: 16px;
   }
 }

@@ -37,7 +37,7 @@ function Profile() {
 
   useEffect(() => {
     async function fetchData() {
-      setIsLoading(true)
+      setIsLoading(true);
       let config;
       if (chain) {
         switch (chain.network) {
@@ -72,16 +72,11 @@ function Profile() {
 
         try {
           if (chain.network === "Godwoken Testnet") {
-            const bal = await contract.balanceOf(
-              address
-            );
+            const bal = await contract.balanceOf(address);
             const metadataURIs = [];
             const itemArray = [];
             for (var i = 0; i < bal; i++) {
-              const tokenId = await contract.tokenOfOwnerByIndex(
-                address,
-                i
-              );
+              const tokenId = await contract.tokenOfOwnerByIndex(address, i);
               const metadata_uri = await contract.tokenURI(tokenId.toString());
               metadataURIs.push(metadata_uri);
 
@@ -117,9 +112,9 @@ function Profile() {
                     tokenId: tokenId.toString(),
                     wallet: ownerW,
                     description: desc,
-                    balance:1,
-                    contract:{address:GODWOKEN_NFTS_ADDRESS},
-                    tokenUri:{gateway:metadata_uri}
+                    balance: 1,
+                    contract: { address: GODWOKEN_NFTS_ADDRESS },
+                    tokenUri: { gateway: metadata_uri },
                   };
                   itemArray.push(meta);
                 });
@@ -127,7 +122,7 @@ function Profile() {
             }
             await new Promise((r) => setTimeout(r, 5000));
             setUserNFTs(itemArray);
-            setIsLoading(false)
+            setIsLoading(false);
           } else {
             const alchemy = new Alchemy(config);
 
@@ -138,9 +133,12 @@ function Profile() {
             // Parse output
             const numNfts = nfts["totalCount"];
             const nftList = nfts["ownedNfts"];
-            setIsLoading(false)
+            setIsLoading(false);
           }
-        } catch (error) {} finally {setIsLoading(false)}
+        } catch (error) {
+        } finally {
+          setIsLoading(false);
+        }
       }
     }
     fetchData();
@@ -149,78 +147,82 @@ function Profile() {
   return (
     <>
       <div className={theme === "light" ? styles.light : styles.dark}>
-      {isLoading?<LoadingSpinner isApprovaltx={false} isSwaptx={false}/>:
-        <div className={styles.profile}>
-          <div className={styles.profiledesc}>
-            <div className={styles.bannerimage}>
-              <img src={Banner} alt="BannerImage"></img>
-            </div>
-            <div className={styles.profileimage}>
-              <img src={ProfileImg} alt="ProfileImage"></img>
-            </div>
-            <div className={styles.details}>
-              <div className={styles.name}>Kane Williamson</div>
-              <div className={styles.desc}>Wellington, New Zealand</div>
-              <div className={styles.descdetails}>
-                NFTs (non-fungible tokens) are unique cryptographic tokens that
-                exist on a blockchain and cannot be replicated. "Tokenizing"
-                these real-world tangible assets makes buying, selling, and
-                trading them more efficient while reducing the probability of
-                fraud.
+        {isLoading && chain ? (
+          <LoadingSpinner isApprovaltx={false} isSwaptx={false} theme={theme} />
+        ) : (
+          <div className={styles.profile}>
+            {/* <div className={styles.profiledesc}>
+              <div className={styles.bannerimage}>
+                <img src={Banner} alt="BannerImage"></img>
               </div>
-            </div>
-          </div>
-          <div className={styles.assets}>
-            <div className={styles.categorybar}>
-              <div className={styles.categories}>
-                <div className={`${styles.category} ${styles.headcategory}`}>
-                  All
+              <div className={styles.profileimage}>
+                <img src={ProfileImg} alt="ProfileImage"></img>
+              </div>
+              <div className={styles.details}>
+                <div className={styles.name}>Kane Williamson</div>
+                <div className={styles.desc}>Wellington, New Zealand</div>
+                <div className={styles.descdetails}>
+                  NFTs (non-fungible tokens) are unique cryptographic tokens
+                  that exist on a blockchain and cannot be replicated.
+                  "Tokenizing" these real-world tangible assets makes buying,
+                  selling, and trading them more efficient while reducing the
+                  probability of fraud.
                 </div>
-                <div className={styles.category}>Favourites</div>
-                <div className={styles.category}>Category 1</div>
-                <div className={styles.category}>Category 2</div>
-                {/* <div className={styles.category}>
-                                Category 3
-                            </div> */}
               </div>
-              {/* <div className={styles.searchbar}>
+            </div> */}
+            <div className={styles.assets}>
+              <div className={styles.categorybar}>
+                <div className={styles.categories}>
+                  <div className={`${styles.category} ${styles.headcategory}`}>
+                    All
+                  </div>
+                  <div className={styles.category}>Favourites</div>
+                  <div className={styles.category}>Category 1</div>
+                  <div className={styles.category}>Category 2</div>
+                </div>
+                {/* <div className={styles.searchbar}>
                             <FaSearch />
                             <input className={styles.search} type='text' placeholder='Search' />
                         </div> */}
-            </div>
-            {isConnected ? (<div>
-             {userNFTs.length!==0 ? <div className={styles.nfts}>
-             {userNFTs.map((nft, index) => {
-               return (
-                 <Link
-                   to={`/profile/${nft.tokenId}`}
-                   state={{
-                     nft: nft,
-                   }}
-                   key={index} 
-                 >
-                   <Catalogue nft={nft} index={index}/>
-                 </Link>
-               );
-             })}
-           </div>:<div className={styles.notconnected}>
-                <div>You don't have any NFT in your wallet</div>
-                <div style={{ marginLeft: "10px", marginTop: "3px" }}>
-                  <BsWallet2 />
-                </div>
-              </div>}
-           </div>
-            ) : (
-              <div className={styles.notconnected}>
-                <div>Connect your Wallet</div>
-                <div style={{ marginLeft: "10px", marginTop: "3px" }}>
-                  <BsWallet2 />
-                </div>
               </div>
-            )}
+              {isConnected && chain.network ? (
+                <div>
+                  {userNFTs.length !== 0 ? (
+                    <div className={styles.nfts}>
+                      {userNFTs.map((nft, index) => {
+                        return (
+                          <Link
+                            to={`/profile/${nft.tokenId}`}
+                            state={{
+                              nft: nft,
+                            }}
+                            key={index}
+                          >
+                            <Catalogue nft={nft} index={index} />
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className={styles.notconnected}>
+                      <div>You don't have any NFT in your wallet</div>
+                      <div style={{ marginLeft: "10px", marginTop: "3px" }}>
+                        <BsWallet2 />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className={styles.notconnected}>
+                  <div>Connect your Wallet</div>
+                  <div style={{ marginLeft: "10px", marginTop: "3px" }}>
+                    <BsWallet2 />
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-        }
+        )}
       </div>
     </>
   );
