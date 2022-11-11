@@ -121,8 +121,9 @@
 }
 
 .logo img {
-  width: 36px;
+  width: 48px;
   display: block;
+  border-radius: 0.5rem;
 }
 
 .menulinks {
@@ -142,7 +143,6 @@
   font-weight: 300;
   letter-spacing: 1px;
   position: relative;
-
 }
 
 .navlinks div {
@@ -228,9 +228,9 @@
     list-style: none;
   }
 
-  .mobilecontent li{
+  .mobilecontent li {
     margin-bottom: 40px;
-    font-family: 'Poppins',sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   .navlinks {
@@ -273,11 +273,12 @@
   }
 
   .logo img {
-    width: 30px;
+    width: 36px;
     display: block;
+    border-radius: 0.4rem;
   }
 
-  .toggle{
+  .toggle {
     margin-left: 10px;
   }
 }
