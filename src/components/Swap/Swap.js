@@ -103,7 +103,7 @@ function Swap() {
         let str = value;
         let cleanUri = str.replace(
           "ipfs://",
-          "https://gateway.pinata.cloud/ipfs/"
+          "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
         );
         let metadata = axios.get(cleanUri).catch(function (error) {
           console.log(error.toJSON());
@@ -118,7 +118,7 @@ function Swap() {
           var desc = value.data.description;
           let image = rawImg.replace(
             "ipfs://",
-            "https://gateway.pinata.cloud/ipfs/"
+            "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
           );
           console.log("Image", image);
 

@@ -80,7 +80,7 @@ function Profile() {
               const metadata_uri = await contract.tokenURI(tokenId.toString());
               metadataURIs.push(metadata_uri);
 
-              const rawUri = `ipfs://QmVbZhfYHDyttyPjHQokVHVPYe7Bd5RdUrhxHoE6QimyYs/${tokenId.toString()}`;
+              const rawUri = `ipfs://QmbHTmDYrtEJXcuJuzhNvp6m2PJexi9KVNweFDZi8Vfmm2/${tokenId.toString()}`;
               const Uri = Promise.resolve(rawUri);
               const owner = address;
 
@@ -88,7 +88,7 @@ function Profile() {
                 let str = value;
                 let cleanUri = str.replace(
                   "ipfs://",
-                  "https://gateway.pinata.cloud/ipfs/"
+                  "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
                 );
                 let metadata = axios.get(cleanUri).catch(function (error) {
                   console.log(error.toJSON());
@@ -102,7 +102,7 @@ function Profile() {
                 var desc = value.data.description;
                 let image = rawImg.replace(
                   "ipfs://",
-                  "https://gateway.pinata.cloud/ipfs/"
+                  "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
                 );
                 Promise.resolve(owner).then((value) => {
                   let ownerW = value;
