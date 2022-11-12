@@ -82,7 +82,7 @@ function Popup(props) {
               const metadata_uri = await contract.tokenURI(tokenId.toString());
               metadataURIs.push(metadata_uri);
 
-              const rawUri = `ipfs://QmVbZhfYHDyttyPjHQokVHVPYe7Bd5RdUrhxHoE6QimyYs/${tokenId.toString()}`;
+              const rawUri = `ipfs://QmbHTmDYrtEJXcuJuzhNvp6m2PJexi9KVNweFDZi8Vfmm2/${tokenId.toString()}`;
               const Uri = Promise.resolve(rawUri);
               const owner = address;
 

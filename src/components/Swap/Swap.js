@@ -95,7 +95,7 @@ function Swap() {
       const totalSupply = await godwokenContract.totalSupply();
       console.log("Total Sypply", Number(totalSupply.toString()));
       const tokenId = Number(totalSupply.toString()) + 1;
-      const rawUri = `ipfs://QmVbZhfYHDyttyPjHQokVHVPYe7Bd5RdUrhxHoE6QimyYs/${tokenId}`;
+      const rawUri = `ipfs://QmbHTmDYrtEJXcuJuzhNvp6m2PJexi9KVNweFDZi8Vfmm2/${tokenId}`;
       const Uri = Promise.resolve(rawUri);
       const owner = address;
 
