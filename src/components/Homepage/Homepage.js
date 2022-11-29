@@ -38,8 +38,8 @@ function Homepage() {
       <div className={theme === "light" ? styles.light : styles.dark}>
         <div className={styles.homepage}>
           <div className={styles.firsttop}>
-            <span className={styles.explore}>Explore</span> the world of
-            Bridging.
+            <span className={styles.explore}>Teleport</span> your NFTs to
+            Godwoken
           </div>
           <div className={styles.main}>
             <div className={styles.mainimage}>
@@ -47,12 +47,12 @@ function Homepage() {
             </div>
             <div className={styles.maincontent}>
               <div className={styles.first}>
-                <span className={styles.explore}>Explore</span> the world of
-                Bridging.
+                <span className={styles.explore}>Teleport</span> your NFTs to
+                Godwoken
               </div>
               <div>
-                Bridging of NFT means moving your NFT from one chain to another
-                chain
+                An easy to use bridge lets you swap your NFTs from several
+                chains to Godwoken starting with polygon.
               </div>
               <Link to="/profile">
                 <div className={styles.button}>

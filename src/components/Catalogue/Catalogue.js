@@ -7,20 +7,19 @@ import { useNetwork } from "wagmi";
 function Catalogue({ nft, index }) {
   const { chain } = useNetwork();
   let image_url = "";
-  
+
   try {
     if (chain.network === "Godwoken Testnet") {
       image_url = nft.image;
     } else {
-      if(nft.media.length!=0){
+      if (nft.media.length != 0) {
         image_url = nft.media[0].gateway;
-      }
-      else{
-        image_url=sample
+      } else {
+        image_url = sample;
       }
     }
   } catch (error) {
-    console.log("Error handle",error)
+    console.log("Error handle", error);
   }
 
   const themes = useContext(ThemeContext);

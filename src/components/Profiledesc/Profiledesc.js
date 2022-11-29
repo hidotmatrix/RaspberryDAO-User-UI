@@ -30,6 +30,7 @@ function Profiledesc() {
 
   const location = useLocation();
   const [nft, setNft] = useState(location.state.nft);
+
   const [isApproved, setApproval] = useState(false);
 
   const { address, isConnected } = useAccount();
@@ -203,81 +204,82 @@ function Profiledesc() {
               {chain.network === "Godwoken Testnet" ? (
                 ""
               ) : (
-                <div className={styles.swapbox}>
-                  <div className={styles.leftswapbox}>
-                    <div className={styles.from}>FROM</div>
-                    <div className={styles.selectNFT}>
-                      <select
-                        name="choosefrom"
-                        id="dropdown"
-                        className={styles.select}
-                        defaultValue={"DEFAULT"}
-                        // onChange={event => setReason(event.target.value)}
-                        required
-                      >
-                        <option value="" disabled selected hidden>
-                          {" "}
-                          Choose a BlockChain
-                        </option>
-                        <option value="Polygon">{chain.name}</option>
-                        {/* <option value="Polygon">Polygon</option>
-                    <option value="XDAI">XDAI</option> */}
-                      </select>
-                    </div>
-                    <div className={styles.amountandbalance}>
-                      <div className={styles.amount}>1</div>
-                      <div className={styles.unitandbalance}>
-                        <div className={styles.unit}> NFT </div>
-                        {/* <div className={styles.balance}>Balance - </div> */}
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.swapbutton}>
-                    {swapWrite.write && isApproved && !isLoading ? (
-                      <button
-                        className={styles.buttonswap}
-                        disabled={!swapWrite.write}
-                        onClick={() => {
-                          handleGetRequest();
-                        }}
-                      >
-                        SWAP
-                      </button>
-                    ) : (
-                      ""
-                    )}
-                    {approvalWrite.write && !isApproved ? (
-                      <button
-                        className={styles.buttonswap}
-                        disabled={!approvalWrite.write}
-                        onClick={() => approvalWrite.write?.()}
-                      >
-                        Approve
-                      </button>
-                    ) : (
-                      ""
-                    )}
-                    {/* {error && ( <div>An error occurred preparing the transaction: {error.message}</div> )} */}
-                  </div>
-                  <div className={styles.rightswapbox}>
-                    <div className={styles.to}>TO</div>
-                    <div className={styles.inputNFT}>
-                      <input
-                        name="tonft"
-                        className={styles.input}
-                        value="GODWOKEN"
-                        disabled
-                      ></input>
-                    </div>
-                    <div className={styles.amountandbalance}>
-                      <div className={styles.amount}>1</div>
-                      <div className={styles.unitandbalance}>
-                        <div className={styles.unit}> NFT </div>
-                        {/* <div className={styles.balance}>Balance - </div> */}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                // <div className={styles.swapbox}>
+                //   <div className={styles.leftswapbox}>
+                //     <div className={styles.from}>FROM</div>
+                //     <div className={styles.selectNFT}>
+                //       <select
+                //         name="choosefrom"
+                //         id="dropdown"
+                //         className={styles.select}
+                //         defaultValue={"DEFAULT"}
+                //         // onChange={event => setReason(event.target.value)}
+                //         required
+                //       >
+                //         <option value="" disabled selected hidden>
+                //           {" "}
+                //           Choose a BlockChain
+                //         </option>
+                //         <option value="Polygon">{chain.name}</option>
+                //         {/* <option value="Polygon">Polygon</option>
+                //     <option value="XDAI">XDAI</option> */}
+                //       </select>
+                //     </div>
+                //     <div className={styles.amountandbalance}>
+                //       <div className={styles.amount}>1</div>
+                //       <div className={styles.unitandbalance}>
+                //         <div className={styles.unit}> NFT </div>
+                //         {/* <div className={styles.balance}>Balance - </div> */}
+                //       </div>
+                //     </div>
+                //   </div>
+                //   <div className={styles.swapbutton}>
+                //     {swapWrite.write && isApproved && !isLoading ? (
+                //       <button
+                //         className={styles.buttonswap}
+                //         disabled={!swapWrite.write}
+                //         onClick={() => {
+                //           handleGetRequest();
+                //         }}
+                //       >
+                //         SWAP
+                //       </button>
+                //     ) : (
+                //       ""
+                //     )}
+                //     {approvalWrite.write && !isApproved ? (
+                //       <button
+                //         className={styles.buttonswap}
+                //         disabled={!approvalWrite.write}
+                //         onClick={() => approvalWrite.write?.()}
+                //       >
+                //         Approve
+                //       </button>
+                //     ) : (
+                //       ""
+                //     )}
+                //     {/* {error && ( <div>An error occurred preparing the transaction: {error.message}</div> )} */}
+                //   </div>
+                //   <div className={styles.rightswapbox}>
+                //     <div className={styles.to}>TO</div>
+                //     <div className={styles.inputNFT}>
+                //       <input
+                //         name="tonft"
+                //         className={styles.input}
+                //         value="GODWOKEN"
+                //         disabled
+                //       ></input>
+                //     </div>
+                //     <div className={styles.amountandbalance}>
+                //       <div className={styles.amount}>1</div>
+                //       <div className={styles.unitandbalance}>
+                //         <div className={styles.unit}> NFT </div>
+                //         {/* <div className={styles.balance}>Balance - </div> */}
+                //       </div>
+                //     </div>
+                //   </div>
+                // </div>
+                <div></div>
               )}
             </div>
           </div>

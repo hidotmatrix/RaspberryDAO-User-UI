@@ -10,10 +10,13 @@ import {
   useContractWrite,
   usePrepareContractWrite,
 } from "wagmi";
+import raspberrydao_pic_1 from "../../images/raspberrydao_pic_1.jpg";
+import raspberrydao_pic_2 from "../../images/raspberrydao_pic_2.jpg";
 import raspberrydao_pic_3 from "../../images/raspberrydao_pic_3.jpg";
+import raspberrydao_pic_4 from "../../images/raspberrydao_pic_4.jpg";
 import styles from "./Swap.module.scss";
 import bitcoinimg from "../../images/blockchain-icon.svg";
-import GodwokenImg from "../../images/godwoken-logo-2.svg";
+import GodwokenImg from "../../images/godwoken-logo-1.svg";
 import Popup from "../Popup/Popup";
 import { ThemeContext } from "../../App";
 import Catalogue from "../Catalogue/Catalogue";
@@ -78,6 +81,29 @@ function Swap() {
     contractInterface: GodwokenNFTs.abi,
     signerOrProvider: godwokenProvider,
   });
+
+  const [picindex, setPicIndex] = useState(0);
+  let l = [
+    raspberrydao_pic_1,
+    raspberrydao_pic_2,
+    raspberrydao_pic_3,
+    raspberrydao_pic_4,
+  ];
+
+  useEffect(() => {
+    let intervalId = 0;
+    const Changing = () => {
+      intervalId = setInterval(() => {
+        setPicIndex((prevIndex) => {
+          return prevIndex + 1 < l.length ? prevIndex + 1 : 0;
+        });
+      }, 1000);
+    };
+    Changing();
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [l, picindex]);
 
   useEffect(() => {
     async function fetch() {
@@ -371,16 +397,28 @@ function Swap() {
                     <div className={styles.card}>
                       <div className={styles.simage}>
                         <img
-                          src={probableMintingNFT}
+                          src={l[picindex]}
                           alt="Sample"
                           className={styles.sampleimage}
                         ></img>
+                        <div className={styles.question}>
+                          <BsQuestionCircle
+                            fontSize="2.5em"
+                            data-tip
+                            data-for="registerTip"
+                            data-place="top"
+                            data-padding="16px"
+                            data-class={styles.tooltip}
+                            data-border={true}
+                            data-multiline={true}
+                          />
+                        </div>
                       </div>
-                      <ReactTooltip id="registerTip" effect="solid">
+                      {/* <ReactTooltip id="registerTip" effect="solid">
                         Most probably you will be minted this NFT on Godowken,
                         but there's a slight chance you will get the next NFT in
                         the collection on Godowken, so mint it right away!
-                      </ReactTooltip>
+                      </ReactTooltip> */}
                       <div className={styles.aboutcard}>
                         <div className={styles.cardhead}>
                           {" "}
@@ -392,18 +430,6 @@ function Swap() {
                         >
                           Choose A Different NFT
                         </div> */}
-                        <div style={{cursor:"pointer"}}>
-                          <BsQuestionCircle
-                            fontSize="1.5em"
-                            data-tip
-                            data-for="registerTip"
-                            data-place="top"
-                            data-padding="16px"
-                            data-class={styles.tooltip}
-                            data-border={true}
-                            data-multiline={true}
-                          />
-                        </div>
                       </div>
                     </div>
                   </div>

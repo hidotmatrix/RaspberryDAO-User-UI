@@ -191,7 +191,7 @@ function Profile() {
                   {userNFTs.length !== 0 ? (
                     <>
                       <div className={styles.heading}>
-                        <span>MY NFT's</span>
+                        <span>MY NFTs</span>
                       </div>
                       <div className={styles.nfts}>
                         {userNFTs.map((nft, index) => {

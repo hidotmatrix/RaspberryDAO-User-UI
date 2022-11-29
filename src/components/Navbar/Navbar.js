@@ -25,7 +25,7 @@ function Navbar() {
     <div className={theme === "light" ? styles.light : styles.dark}>
       <div className={styles.entirenavbar}>
         <div className={styles.left}>
-          <NavLink to="/">
+          <NavLink exact to="/">
             <div className={styles.logo}>
               {theme === "light" ? (
                 <img src={raspberrylogo} alt="Logo" />
@@ -38,9 +38,10 @@ function Navbar() {
             <ul className={styles.menulinks}>
               <li>
                 <NavLink
+                  exact
                   to="/"
                   className={(nav) =>
-                    nav.isActive ? `${styles.navlinks} ` : `${styles.navlinks}`
+                    nav.isActive ? `${styles.navlinks}` : `${styles.navlinks}`
                   }
                 >
                   Home
@@ -49,21 +50,27 @@ function Navbar() {
               </li>
               <li>
                 <NavLink
+                  exact
                   to="/profile"
                   className={(nav) =>
-                    nav.isActive ? `${styles.navlinks}` : `${styles.navlinks}`
+                    nav.isActive
+                      ? `${styles.navlinks} ${styles.active}`
+                      : `${styles.navlinks}`
                   }
                 >
-                  My NFT's
+                  My NFTs
                   <div></div>
                 </NavLink>
               </li>
               {isConnected && chain.network !== "Godwoken Testnet" ? (
                 <li>
                   <NavLink
+                    exact
                     to="/marketplace"
                     className={(nav) =>
-                      nav.isActive ? `${styles.navlinks}` : `${styles.navlinks}`
+                      nav.isActive
+                        ? `${styles.navlinks} ${styles.active}`
+                        : `${styles.navlinks}`
                     }
                   >
                     Swap NFT
@@ -155,7 +162,7 @@ function Navbar() {
                         : `${styles.navlinks}`
                     }
                   >
-                    Dashboard
+                    My NFTs
                     <div></div>
                   </NavLink>
                 </li>

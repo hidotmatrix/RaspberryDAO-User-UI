@@ -39,10 +39,12 @@
 
   .swapbutton {
     background: rgba(8, 0, 18, 0.1);
+    border: 3px solid #ffffff;
   }
 
   .swapbuttonopen {
     background: rgba(4, 46, 87, 0.375);
+    border: 3px solid #ffffff;
   }
 
   .buttonswap {
@@ -53,7 +55,6 @@
   .leftswapbox {
     color: white;
   }
-
   .select {
     color: #ffffff;
     background: rgba(217, 217, 217, 0.36);
@@ -122,7 +123,6 @@
     color: #dc39fc;
   }
 }
-
 .light {
   .swappage {
     background-color: #eae6f0;
@@ -164,10 +164,12 @@
 
   .swapbutton {
     background: rgba(0, 0, 0, 0.1);
+    border: 3px solid #ffffff;
   }
 
   .swapbuttonopen {
     background: rgba(0, 0, 0, 0.1);
+    border: 3px solid #ffffff;
   }
 
   .buttonswap {
@@ -312,7 +314,7 @@
   margin-left: -15px;
   margin-top: 215px;
   cursor: pointer;
-  border: 1px solid white;
+  border: 3px solid #ffffff;
 }
 
 .swapbuttonopen {
@@ -326,7 +328,7 @@
   margin-left: -15px;
   margin-top: 300px;
   cursor: pointer;
-  border: 1px solid white;
+  border: 3px solid #ffffff;
 }
 
 .buttonswap {
@@ -390,13 +392,36 @@
   position: absolute;
 }
 
-.simage{
+.simage {
   min-height: 120px;
+  position: relative;
+  cursor: pointer;
+}
+
+.simage .question {
+  display: none;
+}
+
+.simage:hover .question {
+  display: block;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  pointer-events: none;
+}
+
+.sampleimage:hover {
+  webkit-filter: blur(4px); /* Chrome, Safari, Opera */
+  filter: blur(4px);
 }
 
 .sampleimage {
   width: 120px;
   border-radius: 10px;
+}
+
+[data-for="registerTip"] {
+  display: nones;
 }
 
 .carddesc {
@@ -574,6 +599,7 @@ select option {
   .swapbuttonopen {
     margin-top: 48px;
     margin-left: calc(50% - 30px);
+    border: 3px solid #ffffff;
   }
 
   .amountandbalanceright,
@@ -611,15 +637,15 @@ select option {
     align-items: flex-start;
   }
 
-  .simage{
+  .simage {
     min-height: 0px;
   }
-  
+
   .aboutcard {
     margin-left: 0px;
   }
 
-  .cardhead{
+  .cardhead {
     margin-bottom: 40px;
   }
 
@@ -631,6 +657,7 @@ select option {
   .swapbuttonopen {
     margin-top: 48px;
     margin-left: calc(50% - 30px);
+    border: 3px solid #ffffff;
   }
 
   .from,

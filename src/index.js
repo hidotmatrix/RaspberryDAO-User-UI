@@ -13,13 +13,13 @@ import {
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import GodwokenImg from "./images/godwoken-logo-2.svg";
 
 const godwokenChain = {
   id: 71401,
   name: "Godwoken Testnet",
   network: "Godwoken Testnet",
-  iconUrl:
-    "https://www.nervos.org/wp-content/uploads/2021/11/godwokenlive-810x456.png",
+  iconUrl: GodwokenImg,
   iconBackground: "#000",
   rpcUrls: {
     default: "https://godwoken-testnet-v1.ckbapp.dev",
@@ -46,7 +46,10 @@ const { chains, provider, webSocketProvider } = configureChains(
       ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
       : []),
   ],
-  [alchemyProvider({ apiKey: process.env.REACT_APP_ALCHEMY_API_KEY }), publicProvider()]
+  [
+    alchemyProvider({ apiKey: process.env.REACT_APP_ALCHEMY_API_KEY }),
+    publicProvider(),
+  ]
 );
 
 const { connectors } = getDefaultWallets({
