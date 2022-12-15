@@ -1,0 +1,245 @@
+.entirenavbar {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100px;
+  font-family: "Poppins", sans-serif;
+  position: fixed;
+  justify-content: space-between;
+  z-index: 5;
+  background: #161616;
+  overflow-x: scroll;
+}
+
+.entirenavbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.left {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 42px;
+}
+
+.logo {
+  cursor: pointer;
+  align-items: center;
+}
+
+.logo img {
+  width: 300px;
+  display: block;
+  border-radius: 0.5rem;
+}
+
+.menulinks {
+  display: inline-flex;
+  margin-left: 36px;
+  list-style: none;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 200;
+  font-size: 24px;
+}
+
+.navlinks {
+  margin-right: 28px;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  position: relative;
+  color: white;
+}
+
+.navlinks:hover {
+  color: #e566ff;
+}
+
+.navlinks div {
+  position: absolute;
+  height: 5px;
+  width: 5px;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.active {
+  color: #f1709e !important;
+}
+
+.navlinks div {
+  background-color: transparent;
+}
+
+.active div {
+  background-color: #f1709e;
+}
+
+.right {
+  margin-right: 42px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hamburger {
+  display: none;
+}
+
+@media only screen and (max-width: 1350px) {
+  .logo img {
+    width: 250px;
+    display: block;
+    border-radius: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .hamburger {
+    display: block;
+    margin-left: 18px;
+  }
+
+  .mobileham {
+    background-color: #161616;
+  }
+
+  .menulinks {
+    display: none;
+  }
+
+  .mobileham {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+  }
+
+  .closeimg {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+  }
+
+  .mobileleft {
+    display: flex;
+    flex-direction: column;
+    margin-left: 36px;
+  }
+
+  .mobilelogo {
+    margin-top: 64px;
+  }
+
+  .mobilelogoimage {
+    width: 300px;
+  }
+
+  .mobilecontent {
+    z-index: 50;
+    margin-top: 24px;
+    font-weight: 200;
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0.04em;
+  }
+
+  .mobilecontent ul {
+    list-style: none;
+  }
+
+  .mobilecontent li {
+    margin-bottom: 40px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .navlinks {
+    margin-right: 0px;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    position: relative;
+  }
+
+  .navlinks div {
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .right {
+    margin-right: 20px;
+  }
+
+  .left {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 20px;
+  }
+
+  .logo img {
+    width: 200px;
+    display: block;
+    border-radius: 0.4rem;
+  }
+
+  .toggle {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .entirenavbar {
+    height: 80px;
+  }
+
+  .right {
+    margin-right: 10px;
+  }
+
+  .left {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  .logo img {
+    width: 130px;
+    display: block;
+    border-radius: 0.4rem;
+  }
+
+  .toggle {
+    margin-left: 10px;
+  }
+}
