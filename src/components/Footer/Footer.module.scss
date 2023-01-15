@@ -1,0 +1,166 @@
+.footer {
+    background-color: #000000;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+}
+
+.upperfooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px 10px 50px;
+}
+
+.upperleft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.upperright {
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.logoimages {
+    display: flex;
+    flex-direction: row;
+}
+
+.goddwoken{
+    margin-left: 20px;
+}
+
+.goddwoken img{
+    height: 40px;
+}
+
+.rasp img {
+    width: 240px;
+    margin-left: 25px;
+}
+
+.logos img {
+    margin-right: 25px;
+}
+
+.lowerfooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    padding: 0px 50px 30px 50px;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.privacy,
+.terms {
+    cursor: pointer;
+    font-size: 16px;
+}
+
+@media only screen and (max-width:1080px) {
+    .copyright,
+    .privacy,
+    .terms {
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+
+@media only screen and (max-width:960px) {
+    .upperfooter {
+        flex-direction: column;
+        padding: 20px 0px;
+    }
+
+    .lowerfooter {
+        padding: 0px 0px 20px 0px;
+        flex-direction: column-reverse;
+    }
+
+    .lowerright {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width:640px) {
+    .footer {
+        background-color: #000000;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .upperfooter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 20px 10px 20px;
+    }
+
+    .upperleft {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .upperright {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .heading {
+        color: white;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    .logoimages {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rasp img {
+        width: 180px;
+        margin-left: 25px;
+    }
+
+    .logos img {
+        margin-top: 10px;
+        margin-right: 0px;
+    }
+
+    .logoslast img{
+        margin-top: 10px;
+    }
+
+    .lowerfooter {
+        padding: 0px 20px 20px 20px;
+    }
+
+    .copyright,
+    .privacy,
+    .terms {
+        font-size: 12px;
+        font-weight: 400;
+        text-align: center;
+    }
+}

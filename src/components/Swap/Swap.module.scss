@@ -1,0 +1,692 @@
+.dark {
+  .swappage {
+    background-image: linear-gradient(#352667, #4b3077);
+  }
+
+  .heading {
+    color: #ffffff;
+  }
+
+  .subheading {
+    color: #FFFFFF;
+  }
+}
+
+.light {
+  .swappage {
+    background-image: linear-gradient(#FFFFFF, #dbbce8);
+  }
+
+  .heading {
+    color: #1a1a1a;
+  }
+
+  .subheading {
+    color: #000000;
+  }
+
+  // .choosenft {
+  //   border: 1px solid #FFFFFF;
+  //   background: #161616;
+  //   color: #FFFFFF;
+  // }
+
+  // .choosenft:hover {
+  //   background: #FFFFFF;
+  //   color: #000000;
+  //   border: 1px solid #161616;
+  // }
+
+  // .swapbox {
+  //   background: #FFFFFF;
+  //   border: 1px solid #000000;
+  // }
+
+  // .swapbutton {
+  //   background: rgba(0, 0, 0, 0.1);
+  //   border: 3px solid #8f8f8f;
+  // }
+
+  // .swapbuttonopen {
+  //   background: rgba(0, 0, 0, 0.1);
+  //   border: 3px solid #8f8f8f;
+  // }
+
+  // .buttonswap {
+  //   background: transparent;
+  //   color: #1a1a1a;
+  // }
+
+  // .leftswapbox {
+  //   color: #1a1a1a;
+  // }
+
+  // .select {
+  //   color: #1a1a1a;
+  //   background: rgba(136, 136, 136, 0.36);
+  //   font-family: "Poppins", sans-serif;
+  //   -moz-appearance: none;
+  //   -webkit-appearance: none;
+  //   background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  //   background-repeat: no-repeat;
+  //   background-position-x: 95%;
+  //   background-position-y: 8px;
+  // }
+
+  // select option {
+  //   color: #1f2235;
+  //   background: rgba(136, 136, 136, 0.36);
+  // }
+
+  // .select:invalid {
+  //   color: #1a1a1a !important;
+  // }
+
+  // .amountandbalance {
+  //   background: linear-gradient(180deg,
+  //       rgba(255, 255, 255, 0.06) 0%,
+  //       rgba(255, 255, 255, 0) 100%);
+  //   border: 3px solid #8f8f8f;
+  // }
+
+  // .amountandbalanceright {
+  //   background: linear-gradient(180deg,
+  //       rgba(255, 255, 255, 0.06) 0%,
+  //       rgba(255, 255, 255, 0) 100%);
+  //   border: 3px solid #8f8f8f;
+  // }
+
+  // .amountandbalancerightopen {
+  //   background: linear-gradient(180deg,
+  //       rgba(255, 255, 255, 0.06) 0%,
+  //       rgba(255, 255, 255, 0) 100%);
+  //   border: 3px solid #8f8f8f;
+  // }
+
+  // .rightswapbox {
+  //   color: #1a1a1a;
+  // }
+
+  // .to {
+  //   color: #1a1a1a;
+  // }
+
+  // .input {
+  //   color: #1a1a1a;
+  //   background: rgba(136, 136, 136, 0.36);
+  //   font-family: "Poppins", sans-serif;
+  // }
+}
+
+.choosenft {
+  border: 1px solid #161616;
+  background: #ffffff;
+  color: #000000;
+}
+
+.choosenft:hover {
+  background: #161616;
+  color: #ffffff;
+  border: 1px solid #FFFFFF;
+}
+
+.swapbutton {
+  background: #FFFFFF;
+  // border: 3px solid #ffffff;
+  color:#000000;
+}
+
+.swapbuttonopen {
+  background: #FFFFFF;
+  color: #000000;
+  // border: 3px solid #ffffff;
+}
+
+.buttonswap {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.leftswapbox {
+  color: white;
+}
+
+.select {
+  color: #ffffff;
+  background: rgba(217, 217, 217, 0.36);
+  font-family: "Poppins", sans-serif;
+  -moz-appearance: none;
+  background: rgba(217, 217, 217, 0.36);
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 8px;
+}
+
+select option {
+  color: #1f2235;
+  background: rgba(217, 217, 217, 0.36) !important;
+  font-family: "Poppins", sans-serif;
+}
+
+.select:invalid {
+  color: #ffffff !important;
+}
+
+.amountandbalance {
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%);
+  border: 3px solid #adbdbd;
+}
+
+.amountandbalanceright {
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%);
+  border: 3px solid #adbdbd;
+}
+
+.amountandbalancerightopen {
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%);
+  border: 3px solid #adbdbd;
+}
+
+.rightswapbox {
+  color: white;
+}
+
+.to {
+  color: white;
+}
+
+.input {
+  color: white;
+  background: rgba(217, 217, 217, 0.36);
+  font-family: "Poppins", sans-serif;
+}
+
+.edit:hover {
+  color: #dc39fc;
+}
+
+.tooltip {
+  margin-left: -267px !important;
+  margin-top: -200px !important;
+  width: 140px !important;
+}
+
+.swappage {
+  padding-top: 120px;
+  min-height: calc(100vh - 100px);
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 20px;
+}
+
+.heading {
+  padding-top: 60px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 116%;
+  text-align: center;
+}
+
+.subheading {
+  padding-top: 40px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 150%;
+  text-align: center;
+  padding-bottom: 40px;
+  width: 1000px;
+  margin-left: calc(50% - 500px);
+}
+
+.swapbox {
+  border-radius: 25px;
+  width: 1000px;
+  margin-left: calc(50% - 500px);
+  display: flex;
+  background-size: cover;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  background: #000000;
+  border: 1px solid #FFFFFF;
+}
+
+.choose {
+  margin-left: 25px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.choosenft {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 20px;
+  border-radius: 50px;
+  padding: 8px 24px;
+  // width: 380px;
+}
+
+.swapbutton {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 80px;
+  height: 80px;
+  margin-left: 10px;
+  margin-top: 45px;
+  cursor: pointer;
+  border: 3px solid #ffffff;
+}
+
+.swapbuttonopen {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 80px;
+  height: 80px;
+  margin-left: 10px;
+  margin-top: 140px;
+  cursor: pointer;
+  border: 3px solid #ffffff;
+}
+
+.buttonswap {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background: transparent;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.leftswapbox {
+  flex-basis: 50%;
+  text-align: center;
+  /* border-right: 2px solid rgba(220, 57, 252, 0.5); */
+}
+
+.from {
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 24px;
+  margin-left: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+.cardinfo {
+  margin-left: 25px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.card {
+  display: flex;
+}
+
+.aboutcard {
+  margin-left: 20px;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+.cardhead {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 136%;
+  // margin-bottom: 6px;
+  align-items: flex-start;
+  min-width: 200px;
+  text-align: left;
+  padding-right: 20px;
+}
+
+.edit {
+  width: fit-content;
+  align-items: flex-end;
+  cursor: pointer;
+  // margin-top: 64px;
+  bottom: 5px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  position: absolute;
+}
+
+.simage {
+  min-height: 120px;
+  position: relative;
+  cursor: pointer;
+}
+
+.simage .question {
+  display: none;
+}
+
+.simage:hover .question {
+  display: block;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  pointer-events: none;
+}
+
+.sampleimage:hover {
+  webkit-filter: blur(4px);
+  /* Chrome, Safari, Opera */
+  filter: blur(4px);
+}
+
+.sampleimage {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+}
+
+[data-for="registerTip"] {
+  display: nones;
+}
+
+.carddesc {
+  font-size: 18px;
+  font-weight: 200;
+  letter-spacing: 0.04em;
+  line-height: 136%;
+}
+
+.selectNFT {
+  margin-top: 10px;
+  margin-left: 30px;
+  text-align: left;
+  // margin-bottom: 20px;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.select {
+  padding-left: 50px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 116%;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+  height: 40px;
+  text-decoration: none;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  width: 97%;
+}
+
+select option {
+  font-size: 16px;
+}
+
+.amountandbalance {
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+  justify-content: space-between;
+  margin-right: 50px;
+  backdrop-filter: blur(400px);
+  border-radius: 50px;
+  padding: 15px 40px 15px 40px;
+}
+
+.amountandbalanceright {
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+  justify-content: space-between;
+  margin-right: 50px;
+  backdrop-filter: blur(400px);
+  border-radius: 50px;
+  padding: 15px 40px 15px 40px;
+  margin-top: 90px;
+}
+
+.amountandbalancerightopen {
+  display: flex;
+  flex-direction: row;
+  margin-left: 25px;
+  font-family: "Poppins", sans-serif;
+  justify-content: space-between;
+  margin-right: 50px;
+  backdrop-filter: blur(400px);
+  border-radius: 50px;
+  padding: 15px 40px 15px 40px;
+  //margin-top: 170px;
+}
+
+.amount {
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.unit {
+  font-size: 28px;
+  font-weight: 400;
+  text-align: right;
+}
+
+.balance {
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.rightswapbox {
+  flex-basis: 50%;
+}
+
+.to {
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 30px;
+  margin-left: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+.inputNFT {
+  display: flex;
+  margin-top: 5px;
+  margin-left: 30px;
+  text-align: left;
+  margin-right: 50px;
+  margin-bottom: 10px;
+  align-items: center;
+  position: relative;
+}
+
+.bitcoinimg {
+  position: absolute;
+  z-index: 2;
+  margin-left: 10px;
+  width: 28px;
+}
+
+.input {
+  z-index: 1;
+  // margin-left: -40px;
+  padding-left: 40px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 116%;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  height: 40px;
+  width: 97%;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: none;
+}
+
+.daologo {
+  margin-top: 20px;
+  margin-left: -10px;
+}
+
+// @media only screen and (min-width:1080px) {
+//   .cardhead {
+//     width: 320px;
+//     white-space: nowrap;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//   }
+// }
+
+@media only screen and (max-width: 1080px) {
+  .subheading{
+    width: 600px;
+    margin-left: calc(50% - 300px);
+  }
+
+  .daologo {
+    display: none;
+  }
+
+  .tooltip {
+    //bottom: 24px;
+    margin: -196px !important;
+    width: 140px !important;
+  }
+
+  .swapbox {
+    backdrop-filter: blur(400px);
+    border-radius: 25px;
+    height: auto;
+    width: 600px;
+    margin-left: calc(50% - 300px);
+    display: flex;
+    background-image: none;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+
+  .swapbutton,
+  .swapbuttonopen {
+    margin-top: 48px;
+    margin-left: calc(50% - 42px);
+    border: 3px solid #ffffff;
+  }
+
+  .amountandbalanceright,
+  .amountandbalancerightopen {
+    margin-top: 24px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .tooltip {
+    //bottom: 24px;
+    margin: 24 !important;
+    width: 140px !important;
+  }
+
+  .heading {
+    font-size: 28px;
+    padding-top: 30px;
+  }
+
+  .subheading{
+    padding-top: 20px;
+    width: 300px;
+    margin-left: calc(50% - 150px);
+    font-size: 18px;
+  }
+
+  .swapbox {
+    border-radius: 25px;
+    height: auto;
+    width: 320px;
+    margin-left: calc(50% - 160px);
+    display: flex;
+    background-image: none;
+    flex-direction: column;
+    padding-bottom: 60px;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .simage {
+    min-height: 0px;
+  }
+
+  .aboutcard {
+    margin-left: 0px;
+  }
+
+  .cardhead {
+    margin-bottom: 40px;
+  }
+
+  .edit {
+    margin-top: 10px;
+  }
+
+  .swapbutton,
+  .swapbuttonopen {
+    margin-top: 48px;
+    margin-left: calc(50% - 42px);
+    border: 3px solid #ffffff;
+  }
+
+  .from,
+  .to,
+  .choose {
+    margin-left: 15px;
+  }
+
+  .selectNFT,
+  .inputNFT {
+    margin-left: 20px;
+  }
+
+  .amountandbalance {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  .amountandbalanceright,
+  .amountandbalancerightopen {
+    margin-top: 24px;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}
