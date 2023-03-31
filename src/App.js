@@ -38,7 +38,7 @@ function App() {
               path="/swap"
               exact
               element={
-                isConnected && chain.network !== "Godwoken " ? (
+                isConnected && chain.network !== "Godwoken" ? (
                   <Swap />
                 ) : (
                   <Navigate to="/profile" />

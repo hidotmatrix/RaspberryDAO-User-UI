@@ -26,7 +26,7 @@ function Profiledesc() {
   };
 
   const BASE_EXPLORER_URL_GODWOKEN =
-    "https://gw-explorer.nervosdao.community/token/";
+    "https://gw-mainnet-explorer.nervosdao.community/token/";
 
   const BASE_EXPLORER_URL_POLYGON = "https://polygonscan.com/token/";
   const NFT_CONTRACT_ADDRESS = nft.contract.address;
@@ -38,7 +38,7 @@ function Profiledesc() {
 
   let image_url = "";
   try {
-    if (chain.network === "Godwoken ") {
+    if (chain.network === "Godwoken") {
       image_url = nft.image;
       NFT_EXPLORER_URL =
         BASE_EXPLORER_URL_GODWOKEN +
@@ -113,7 +113,7 @@ function Profiledesc() {
                 </div>
               </div>
               <div className={styles.nftdesc}>{nft.description}</div>
-              {chain.network === "Godwoken " ? (
+              {chain.network === "Godwoken" ? (
                 ""
               ) : (
                 <div className={styles.swap}>

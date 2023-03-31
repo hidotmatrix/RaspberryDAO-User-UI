@@ -15,14 +15,14 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import GodwokenImg from "./images/godwoken-logo-2.svg";
 
-const godwokenChain = {
-  id: 71401,
-  name: "Godwoken ",
-  network: "Godwoken ",
+const godwokenMainnetChain = {
+  id: 71402,
+  name: "Godwoken Mainnet",
+  network: "Godwoken",
   iconUrl: GodwokenImg,
   iconBackground: "#000",
   rpcUrls: {
-    default: "https://v1.testnet.godwoken.io/rpcc",
+    default: "https://v1.mainnet.godwoken.io/rpc",
   },
   nativeCurrency: {
     decimals: 18,
@@ -31,18 +31,18 @@ const godwokenChain = {
   },
   blockExplorers: {
     default: {
-      name: "GodWoken ",
-      url: "https://v1.testnet.gwscan.com/",
+      name: "Godwoken Mainnet",
+      url: "https://gw-mainnet-explorer.nervosdao.community/",
     },
   },
-  testnet: true,
+  testnet: false,
 };
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
     // chain.mainnet,
     chain.polygon,
-    godwokenChain,
+    godwokenMainnetChain,
     // chain.rinkeby,
     //chain.polygonMumbai,
     ...(process.env.REACT_APP_ENABLE_TESTNETS === "true"

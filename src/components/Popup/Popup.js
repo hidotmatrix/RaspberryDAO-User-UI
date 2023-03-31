@@ -58,13 +58,13 @@ function Popup(props) {
               network: Network.MATIC_MUMBAI,
             };
             break;
-          case "Godwoken ":
+          case "Godwoken":
             config = {};
             break;
         }
 
         try {
-          if (chain.network === "Godwoken ") {
+          if (chain.network === "Godwoken") {
             const bal = await contract.balanceOf(address);
             const metadataURIs = [];
             const itemArray = [];
@@ -93,6 +93,16 @@ function Popup(props) {
                 let rawImg = value.data.image;
                 var name = value.data.name;
                 var desc = value.data.description;
+                /*
+                 * Metadata uri has a error of One negative Token Id in NFT Name , so for fixing that
+                 * incrementing and appending the updated_name in the name of NFT.
+                 */
+                const correct_num = Number(name.charAt(name.length - 1)) + 1;
+                const updated_name = name.replace(
+                  name.charAt(name.length - 1),
+                  correct_num.toString()
+                );
+
                 let image = rawImg.replace(
                   "ipfs://",
                   "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
@@ -100,7 +110,7 @@ function Popup(props) {
                 Promise.resolve(owner).then((value) => {
                   let ownerW = value;
                   let meta = {
-                    title: name,
+                    title: updated_name,
                     image: image,
                     tokenId: tokenId.toString(),
                     wallet: ownerW,

@@ -18,7 +18,7 @@ function Catalogue({ nft, index }) {
   let image_url = "";
 
   try {
-    if (chain.network === "Godwoken ") {
+    if (chain.network === "Godwoken") {
       image_url = nft.image;
     } else {
       if (nft.media.length !== 0 && nft.media[0].format !== "mp4") {
@@ -42,7 +42,7 @@ function Catalogue({ nft, index }) {
                 <div className={styles.nameandlogo}>
                   <div className={styles.name}>{Truncate(nft.title)}</div>
                   <div className={styles.logo}>
-                    {chain.network === "Godwoken " ? (
+                    {chain.network === "Godwoken" ? (
                       <img src={Godwokenlogo}></img>
                     ) : (
                       <img src={polygonlogo}></img>
