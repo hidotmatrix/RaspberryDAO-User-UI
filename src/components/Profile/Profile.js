@@ -76,6 +76,7 @@ function Profile() {
             const itemArray = [];
             for (var i = 0; i < bal; i++) {
               const tokenId = await contract.tokenOfOwnerByIndex(address, i);
+              console.log("Token Id", tokenId.toString());
               const metadata_uri = await contract.tokenURI(tokenId.toString());
               metadataURIs.push(metadata_uri);
 

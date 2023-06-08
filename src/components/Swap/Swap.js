@@ -57,7 +57,9 @@ function Swap() {
     media: nft != null ? nft.nftdesc.media : [],
     selectedNFT_approve_count: 1,
     selectedNFT_swap_count: 1,
+    nftTokenType: nft != null ? nft.nftdesc.tokenType : "",
   });
+  console.log("Selected NFT", selected);
   let image_url = "";
   try {
     if (selected.media.length !== 0) {
@@ -124,11 +126,14 @@ function Swap() {
         address,
         POLYGON_BRIDGE_ADDRESS
       );
-      //console.log("Apprval flag", approveFlag);
+
+      console.log("Apprval flag", approveFlag);
       setApproval(approveFlag);
     }
     fetch();
   }, [selected, isApproved]);
+
+  //console.log("isApproved", isApproved);
 
   useEffect(() => {
     async function fetch() {
@@ -193,6 +198,7 @@ function Swap() {
   const gasFees = "0.001";
   const bridgeFee = "0.01";
   const totalFees = Number(gasFees) + Number(bridgeFee);
+  const contractType = selected.nftTokenType === "ERC721" ? 0 : 1;
   const { config, error, isError } = usePrepareContractWrite({
     addressOrName: POLYGON_BRIDGE_ADDRESS,
     contractInterface: ABI.abi,
@@ -203,6 +209,7 @@ function Swap() {
       ethers.utils.parseEther(gasFees),
       "71401",
       selected.tokenId,
+      contractType,
       selected.tokenUri?.gateway,
     ],
     overrides: {
@@ -280,7 +287,7 @@ function Swap() {
   };
 
   useEffect(() => {
-    console.clear();
+    // console.clear();
     if (approvalWrite.data && selected.selectedNFT_approve_count < 2) {
       setPopupOpen(true);
       selected.selectedNFT_approve_count =
