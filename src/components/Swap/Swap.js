@@ -59,7 +59,6 @@ function Swap() {
     selectedNFT_swap_count: 1,
     nftTokenType: nft != null ? nft.nftdesc.tokenType : "",
   });
-  console.log("Selected NFT", selected);
   let image_url = "";
   try {
     if (selected.media.length !== 0) {
@@ -126,20 +125,15 @@ function Swap() {
         address,
         POLYGON_BRIDGE_ADDRESS
       );
-
-      console.log("Apprval flag", approveFlag);
       setApproval(approveFlag);
     }
     fetch();
   }, [selected, isApproved]);
 
-  //console.log("isApproved", isApproved);
-
   useEffect(() => {
     async function fetch() {
       const totalSupply = await godwokenContract.totalSupply();
       const tokenId = Number(totalSupply.toString()) + 1;
-      console.log("Token Id", tokenId.toString());
       const rawUri = `ipfs://QmbHTmDYrtEJXcuJuzhNvp6m2PJexi9KVNweFDZi8Vfmm2/${tokenId}`;
       const Uri = Promise.resolve(rawUri);
       const owner = address;
@@ -287,7 +281,7 @@ function Swap() {
   };
 
   useEffect(() => {
-    // console.clear();
+    console.clear();
     if (approvalWrite.data && selected.selectedNFT_approve_count < 2) {
       setPopupOpen(true);
       selected.selectedNFT_approve_count =
