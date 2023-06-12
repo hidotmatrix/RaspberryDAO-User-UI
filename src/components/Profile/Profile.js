@@ -64,18 +64,19 @@ function Profile() {
               network: Network.MATIC_MUMBAI,
             };
             break;
-          case "Godwoken ":
+          case "Godwoken":
             config = {};
             break;
         }
 
         try {
-          if (chain.network === "Godwoken ") {
+          if (chain.network === "Godwoken") {
             const bal = await contract.balanceOf(address);
             const metadataURIs = [];
             const itemArray = [];
             for (var i = 0; i < bal; i++) {
               const tokenId = await contract.tokenOfOwnerByIndex(address, i);
+              console.log("Token Id", tokenId.toString());
               const metadata_uri = await contract.tokenURI(tokenId.toString());
               metadataURIs.push(metadata_uri);
 
@@ -83,15 +84,17 @@ function Profile() {
               const Uri = Promise.resolve(rawUri);
               const owner = address;
 
-              const getUri = Uri.then((value) => {
+              const getUri = Uri.then(async (value) => {
                 let str = value;
                 let cleanUri = str.replace(
                   "ipfs://",
                   "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
                 );
-                let metadata = axios.get(cleanUri).catch(function (error) {
-                  // console.log(error.toJSON());
-                });
+                let metadata = await axios
+                  .get(cleanUri)
+                  .catch(function (error) {
+                    // console.log(error.toJSON());
+                  });
                 return metadata;
               });
 
@@ -99,6 +102,17 @@ function Profile() {
                 let rawImg = value.data.image;
                 var name = value.data.name;
                 var desc = value.data.description;
+
+                /*
+                 * Metadata uri has a error of One negative Token Id in NFT Name , so for fixing that
+                 * incrementing and appending the updated_name in the name of NFT.
+                 */
+                const correct_num = Number(name.charAt(name.length - 1)) + 1;
+                const updated_name = name.replace(
+                  name.charAt(name.length - 1),
+                  correct_num.toString()
+                );
+
                 let image = rawImg.replace(
                   "ipfs://",
                   "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
@@ -106,7 +120,7 @@ function Profile() {
                 Promise.resolve(owner).then((value) => {
                   let ownerW = value;
                   let meta = {
-                    title: name,
+                    title: updated_name,
                     image: image,
                     tokenId: tokenId.toString(),
                     wallet: ownerW,

@@ -22,7 +22,7 @@ function SwapCatalogue(props) {
   let image_url = "";
 
   try {
-    if (chain.network === "Godwoken ") {
+    if (chain.network === "Godwoken") {
       image_url = props.nft.image;
     } else {
       if (props.nft.media.length !== 0 && props.nft.media[0].format !== "mp4") {

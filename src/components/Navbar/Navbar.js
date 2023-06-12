@@ -56,7 +56,7 @@ function Navbar() {
                 <div></div>
               </NavLink>
             </li>
-            {isConnected && chain.network !== "Godwoken " ? (
+            {isConnected && chain.network !== "Godwoken" ? (
               <li>
                 <NavLink
                   to="/swap"
@@ -131,7 +131,7 @@ function Navbar() {
                     <div></div>
                   </NavLink>
                 </li>
-                {isConnected && chain.network !== "Godwoken " ? (
+                {isConnected && chain.network !== "Godwoken" ? (
                   <li onClick={() => setMobileOpen(false)}>
                     <NavLink
                       to="/swap"

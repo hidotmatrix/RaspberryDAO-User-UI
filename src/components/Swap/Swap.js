@@ -34,7 +34,7 @@ import { useLocation } from "react-router-dom";
 
 const POLYGON_TESTNET_EXPLORER_BASE_URL = "https://polygonscan.com/tx/";
 
-const GODWOKEN_RPC_URL = "https://godwoken-testnet-v1.ckbapp.dev";
+const GODWOKEN_RPC_URL = "https://v1.mainnet.godwoken.io/rpc";
 const godwokenProvider = new ethers.providers.JsonRpcProvider(GODWOKEN_RPC_URL);
 
 function Swap() {
@@ -57,7 +57,9 @@ function Swap() {
     media: nft != null ? nft.nftdesc.media : [],
     selectedNFT_approve_count: 1,
     selectedNFT_swap_count: 1,
+    nftTokenType: nft != null ? nft.nftdesc.tokenType : "",
   });
+  console.log("Selected NFT", selected);
   let image_url = "";
   try {
     if (selected.media.length !== 0) {
@@ -124,16 +126,20 @@ function Swap() {
         address,
         POLYGON_BRIDGE_ADDRESS
       );
-      //console.log("Apprval flag", approveFlag);
+
+      console.log("Apprval flag", approveFlag);
       setApproval(approveFlag);
     }
     fetch();
   }, [selected, isApproved]);
 
+  //console.log("isApproved", isApproved);
+
   useEffect(() => {
     async function fetch() {
       const totalSupply = await godwokenContract.totalSupply();
       const tokenId = Number(totalSupply.toString()) + 1;
+      console.log("Token Id", tokenId.toString());
       const rawUri = `ipfs://QmbHTmDYrtEJXcuJuzhNvp6m2PJexi9KVNweFDZi8Vfmm2/${tokenId}`;
       const Uri = Promise.resolve(rawUri);
       const owner = address;
@@ -153,6 +159,16 @@ function Swap() {
           let rawImg = value.data.image;
           var name = value.data.name;
           var desc = value.data.description;
+
+          /*
+           * Metadata uri has a error of One negative Token Id in NFT Name , so for fixing that
+           * incrementing and appending the updated_name in the name of NFT.
+           */
+          const correct_num = Number(name.charAt(name.length - 1)) + 1;
+          const updated_name = name.replace(
+            name.charAt(name.length - 1),
+            correct_num.toString()
+          );
           let image = rawImg.replace(
             "ipfs://",
             "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
@@ -161,7 +177,7 @@ function Swap() {
           Promise.resolve(owner).then((value) => {
             let ownerW = value;
             let meta = {
-              title: name,
+              title: updated_name,
               image: image,
               tokenId: tokenId.toString(),
               wallet: ownerW,
@@ -170,7 +186,7 @@ function Swap() {
               contract: { address: GODWOKEN_NFTS_ADDRESS },
               tokenUri: { gateway: "" },
             };
-            setGodwokenProbableTitle(name);
+            setGodwokenProbableTitle(updated_name);
           });
         });
         await new Promise((r) => setTimeout(r, 1000));
@@ -182,6 +198,7 @@ function Swap() {
   const gasFees = "0.001";
   const bridgeFee = "0.01";
   const totalFees = Number(gasFees) + Number(bridgeFee);
+  const contractType = selected.nftTokenType === "ERC721" ? 0 : 1;
   const { config, error, isError } = usePrepareContractWrite({
     addressOrName: POLYGON_BRIDGE_ADDRESS,
     contractInterface: ABI.abi,
@@ -192,6 +209,7 @@ function Swap() {
       ethers.utils.parseEther(gasFees),
       "71401",
       selected.tokenId,
+      contractType,
       selected.tokenUri?.gateway,
     ],
     overrides: {
@@ -269,7 +287,7 @@ function Swap() {
   };
 
   useEffect(() => {
-    console.clear();
+    // console.clear();
     if (approvalWrite.data && selected.selectedNFT_approve_count < 2) {
       setPopupOpen(true);
       selected.selectedNFT_approve_count =
